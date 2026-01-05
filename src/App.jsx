@@ -117,7 +117,7 @@ const ALL_LLMS = [
   // Philippine AI Platforms
   { id: 'lexpilipinas', name: 'Lex Pilipinas', url: 'https://lexpilipinas.com/', icon: 'https://pngfre.com/wp-content/uploads/question-mark-42-1024x1024.png', category: 'Philippines' },
   { id: 'pilipinasai', name: 'Pilipinas AI', url: 'https://www.epldt.com/', icon: 'https://pngfre.com/wp-content/uploads/question-mark-42-1024x1024.png', category: 'Philippines' },
-  { id: 'likasgpt', name: 'LikásGPT', url: 'https://www.infinivan.com/infinivan-and-up-diliman-unveil-likasgpt-ai-powered-crm-designed-to-understand-the-filipino-voice/', icon: 'https://pngfre.com/wp-content/uploads/question-mark-42-1024x1024.png', category: 'Philippines' },
+  { id: 'likasgpt', name: 'LikásGPT', url: 'https://www.infinivan.com/infinivan-and-up-diliman-unveil-likasgpt-ai-powered-crm-designed-to-understand-the-filipino-voice/', icon: 'https://th.bing.com/th/id/ODF.E_pcQ0vuT9D7Fl3dexKp7g?w=32&h=32&qlt=90&pcl=fffffa&o=6&pid=1.2', category: 'Philippines' },
 
   // European AI Platforms
   { id: 'aleph-alpha', name: 'Aleph Alpha', url: 'https://www.aleph-alpha.com/', icon: 'https://pngfre.com/wp-content/uploads/question-mark-42-1024x1024.png', category: 'European' },
