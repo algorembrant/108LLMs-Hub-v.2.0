@@ -403,8 +403,17 @@ function App() {
   const [searchQuery, setSearchQuery] = useState('');
   const [stocks, setStocks] = useState(generateMockStocks()); // Start with mock data immediately
   const [loading, setLoading] = useState(false); // Don't show loading on updates
+  const [showIntro, setShowIntro] = useState(true);
 
   const categories = ['All', ...new Set(ALL_LLMS.map(llm => llm.category))].sort();
+
+  // Auto-hide intro after 4 seconds
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowIntro(false);
+    }, 4000);
+    return () => clearTimeout(timer);
+  }, []);
 
   const filteredLLMs = ALL_LLMS.filter(llm => {
     const matchesCategory = selectedCategory === 'All' || llm.category === selectedCategory;
@@ -509,6 +518,31 @@ function App() {
 
   return (
     <div className="flex flex-col h-screen bg-white text-gray-900">
+      {/* Animated Intro Screen */}
+      {showIntro && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-gradient-to-br from-gray-900 via-gray-800 to-black intro-screen">
+          <div className="text-center space-y-6 px-8">
+            <div className="intro-logo">
+              <Sparkles className="w-16 h-16 mx-auto mb-4 text-yellow-400 sparkle-intro" />
+            </div>
+            <h1 className="text-5xl md:text-6xl font-bold golden-glow-intro intro-title">
+              AiQuasarous Global
+            </h1>
+            <p className="text-xl text-gray-300 intro-subtitle">
+              Drag-drop-open your favorite Model
+            </p>
+            <p className="text-lg text-gray-400 intro-count">
+              {ALL_LLMS.length} AI platforms available worldwide
+            </p>
+            <div className="flex justify-center gap-2 mt-8 intro-dots">
+              <div className="w-2 h-2 bg-yellow-400 rounded-full animate-bounce" style={{ animationDelay: '0ms' }}></div>
+              <div className="w-2 h-2 bg-yellow-400 rounded-full animate-bounce" style={{ animationDelay: '150ms' }}></div>
+              <div className="w-2 h-2 bg-yellow-400 rounded-full animate-bounce" style={{ animationDelay: '300ms' }}></div>
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* Top LLM Banner */}
       <div className="h-16 bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 overflow-hidden relative border-b border-gray-700">
         <div className="absolute inset-0 flex items-center">
@@ -747,6 +781,80 @@ function App() {
           100% { background-position: 0% 50%; }
         }
 
+        @keyframes fadeIn {
+          from { opacity: 0; }
+          to { opacity: 1; }
+        }
+
+        @keyframes fadeOut {
+          from { opacity: 1; }
+          to { opacity: 0; }
+        }
+
+        @keyframes slideUp {
+          from { 
+            opacity: 0;
+            transform: translateY(30px);
+          }
+          to { 
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        @keyframes scaleIn {
+          from { 
+            opacity: 0;
+            transform: scale(0.8);
+          }
+          to { 
+            opacity: 1;
+            transform: scale(1);
+          }
+        }
+
+        @keyframes glow-pulse-big {
+          0%, 100% { 
+            text-shadow: 0 0 20px rgba(255, 215, 0, 0.8),
+                         0 0 40px rgba(255, 215, 0, 0.6),
+                         0 0 60px rgba(255, 215, 0, 0.4);
+          }
+          50% { 
+            text-shadow: 0 0 30px rgba(255, 215, 0, 1),
+                         0 0 60px rgba(255, 215, 0, 0.8),
+                         0 0 90px rgba(255, 215, 0, 0.6);
+          }
+        }
+
+        .intro-screen {
+          animation: fadeOut 0.8s ease-in-out 3.2s forwards;
+        }
+
+        .intro-logo {
+          animation: scaleIn 0.6s ease-out;
+        }
+
+        .sparkle-intro {
+          animation: sparkle 1.5s ease-in-out infinite;
+          filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.8));
+        }
+
+        .intro-title {
+          animation: slideUp 0.8s ease-out 0.3s both;
+        }
+
+        .intro-subtitle {
+          animation: slideUp 0.8s ease-out 0.6s both;
+        }
+
+        .intro-count {
+          animation: slideUp 0.8s ease-out 0.9s both;
+        }
+
+        .intro-dots {
+          animation: fadeIn 0.8s ease-out 1.2s both;
+        }
+
         .golden-glow {
           background: linear-gradient(135deg, #ffd700 0%, #ffed4e 25%, #ffa500 50%, #ffed4e 75%, #ffd700 100%);
           background-size: 200% 200%;
@@ -757,6 +865,16 @@ function App() {
           position: relative;
         }
 
+        .golden-glow-intro {
+          background: linear-gradient(135deg, #ffd700 0%, #ffed4e 25%, #ffa500 50%, #ffed4e 75%, #ffd700 100%);
+          background-size: 200% 200%;
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
+          animation: glow-pulse-big 2s ease-in-out infinite, gradient-shift 3s ease infinite;
+          position: relative;
+        }
+
         .sparkle-icon {
           color: #ffd700;
           animation: sparkle 2s ease-in-out infinite;
@@ -764,11 +882,11 @@ function App() {
         }
 
         .animate-scroll {
-          animation: scroll 500s linear infinite;
+          animation: scroll 300s linear infinite;
         }
 
         .animate-scroll-reverse {
-          animation: scroll-reverse 500s linear infinite;
+          animation: scroll-reverse 300s linear infinite;
         }
 
         .animate-scroll:hover,
