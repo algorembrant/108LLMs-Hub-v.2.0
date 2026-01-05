@@ -18,10 +18,10 @@ const ALL_LLMS = [
   { id: 'consensus', name: 'Consensus', url: 'https://consensus.app/', icon: 'https://th.bing.com/th/id/ODF.Bz8ANAlfvLkBbCmp5ruAFQ?w=32&h=32&qlt=90&pcl=fffffc&o=6&pid=1.2', category: 'Search' },
   { id: 'elicit', name: 'Elicit', url: 'https://elicit.com/', icon: 'https://framerusercontent.com/images/Vjg7ANBZPC8Ulu3iwyAVm5B1UNQ.png', category: 'Search' },
   { id: 'scholarai', name: 'ScholarAI', url: 'https://scholar-ai.net/', icon: 'https://scholar-ai.net/favicon.ico', category: 'Search' },
-  { id: 'tavily', name: 'Tavily', url: 'https://tavily.com/', icon: 'https://pngfre.com/wp-content/uploads/question-mark-42-1024x1024.png', category: 'Search' },
-  { id: 'morphic', name: 'Morphic', url: 'https://morphic.sh/', icon: 'https://pngfre.com/wp-content/uploads/question-mark-42-1024x1024.png', category: 'Search' },
-  { id: 'iask', name: 'iAsk.ai', url: 'https://iask.ai/', icon: 'https://pngfre.com/wp-content/uploads/question-mark-42-1024x1024.png', category: 'Search' },
-    
+  { id: 'tavily', name: 'Tavily', url: 'https://tavily.com/', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/search.svg', category: 'Search' },
+  { id: 'morphic', name: 'Morphic', url: 'https://morphic.sh/', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/openai.svg', category: 'Search' },
+  { id: 'iask', name: 'iAsk.ai', url: 'https://iask.ai/', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/askubuntu.svg', category: 'Search' },
+   
   // Multi-Model Platforms
   { id: 'poe', name: 'Poe', url: 'https://poe.com/', icon: 'https://th.bing.com/th/id/ODF.qYxPu_oPp_nqOxV638KgEA?w=32&h=32&qlt=90&pcl=fffffa&o=6&pid=1.2', category: 'Multi-Model' },
   { id: 'huggingchat', name: 'HuggingChat', url: 'https://huggingface.co/chat/', icon: 'https://huggingface.co/front/assets/huggingface_logo.svg', category: 'Multi-Model' },
