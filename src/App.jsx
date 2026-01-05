@@ -207,12 +207,12 @@ const ALL_LLMS = [
   { id: 'resemble', name: 'Resemble AI', url: 'https://www.resemble.ai/', icon: 'https://10web.io/wp-content/uploads/2024/07/Resemble_AI.png', category: 'Voice' },
   { id: 'descript', name: 'Descript', url: 'https://www.descript.com/', icon: 'https://th.bing.com/th/id/ODF.MwUvUcqOXm7NDLqb9R8v6Q?w=32&h=32&qlt=90&pcl=fffffa&o=6&pid=1.2', category: 'Voice' },
   { id: 'speechify', name: 'Speechify', url: 'https://speechify.com/', icon: 'https://speechify.com/favicon.ico', category: 'Voice' },
-  { id: 'play-ht', name: 'Play.ht', url: 'https://play.ht/', icon: 'https://pngfre.com/wp-content/uploads/question-mark-42-1024x1024.png', category: 'Voice' },
-  { id: 'wellsaid', name: 'WellSaid Labs', url: 'https://wellsaidlabs.com/', icon: 'https://pngfre.com/wp-content/uploads/question-mark-42-1024x1024.png', category: 'Voice' },
-  { id: 'voice-ai', name: 'Voice.ai', url: 'https://voice.ai/', icon: 'https://pngfre.com/wp-content/uploads/question-mark-42-1024x1024.png', category: 'Voice' },
-  { id: 'suno', name: 'Suno AI', url: 'https://www.suno.ai/', icon: 'https://pngfre.com/wp-content/uploads/question-mark-42-1024x1024.png', category: 'Voice' },
-  { id: 'udio', name: 'Udio', url: 'https://www.udio.com/', icon: 'https://pngfre.com/wp-content/uploads/question-mark-42-1024x1024.png', category: 'Voice' },
-  { id: 'audiobox', name: 'AudioBox', url: 'https://audiobox.metademolab.com/', icon: 'https://pngfre.com/wp-content/uploads/question-mark-42-1024x1024.png', category: 'Voice' },
+  { id: 'play-ht', name: 'Play.ht', url: 'https://play.ht/', icon: 'https://th.bing.com/th/id/ODF.bUIsi59Iqm6rKZDl9-_onw?w=32&h=32&qlt=90&pcl=fffffa&o=6&pid=1.2', category: 'Voice' },
+  { id: 'wellsaid', name: 'WellSaid Labs', url: 'https://wellsaidlabs.com/', icon: 'https://th.bing.com/th/id/ODF.m4Qi_WdfS1ok3tv-dd6WJQ?w=32&h=32&qlt=90&pcl=fffffa&o=6&pid=1.2', category: 'Voice' },
+  { id: 'voice-ai', name: 'Voice.ai', url: 'https://voice.ai/', icon: 'https://th.bing.com/th/id/ODF.sljNPMkcADWvX7Og7QMnMw?w=32&h=32&qlt=90&pcl=fffffc&o=6&pid=1.2', category: 'Voice' },
+  { id: 'suno', name: 'Suno AI', url: 'https://www.suno.ai/', icon: 'https://th.bing.com/th/id/ODF.ILgyNiCPIfidhMheFPj0OQ?w=32&h=32&qlt=91&pcl=fffffa&o=6&pid=1.2', category: 'Voice' },
+  { id: 'udio', name: 'Udio', url: 'https://www.udio.com/', icon: 'https://th.bing.com/th/id/ODF.LnAGZU9P3bCbY6fH-vWmng?w=32&h=32&qlt=90&pcl=fffffc&o=6&pid=1.2', category: 'Voice' },
+  { id: 'audiobox', name: 'AudioBox', url: 'https://audiobox.metademolab.com/', icon: 'https://th.bing.com/th/id/ODF.MWMIJ-2xIWQ7doC_8gpNUg?w=32&h=32&qlt=90&pcl=fffffc&o=6&pid=1.2', category: 'Voice' },
   
   // Experimental & Research
   { id: 'pi', name: 'Pi (Inflection)', url: 'https://pi.ai/', icon: 'https://th.bing.com/th/id/ODF.iBZdyeyAhzJZ3-7hSw_NgQ?w=32&h=32&qlt=90&pcl=fffffa&o=6&pid=1.2', category: 'Experimental' },
