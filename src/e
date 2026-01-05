@@ -1,19 +1,14 @@
-import React, { useState, useEffect } from 'react';
-import { X, ExternalLink, Grip, AlertCircle, Layout, Grid, Search, Github, TrendingUp, TrendingDown, Sparkles } from 'lucide-react';
+import React, { useState } from 'react';
+import { X, ExternalLink, Grip, AlertCircle, Layout, Grid, Search } from 'lucide-react';
+
 
 const ALL_LLMS = [
   // Major AI Assistants
   { id: 'chatgpt', name: 'ChatGPT', url: 'https://chatgpt.com/', icon: 'https://cdn.oaistatic.com/_next/static/media/apple-touch-icon.59f2e898.png', category: 'Major' },
   { id: 'claude', name: 'Claude', url: 'https://claude.ai/', icon: 'https://claude.ai/images/claude_app_icon.png', category: 'Major' },
   { id: 'gemini', name: 'Google Gemini', url: 'https://gemini.google.com/app', icon: 'https://www.gstatic.com/lamda/images/gemini_favicon_f069958c85030456e93de685481c559f160ea06b.png', category: 'Major' },
-  { id: 'copilot', name: 'Microsoft Copilot', url: 'https://copilot.microsoft.com/', icon: 'https://www.bing.com/sa/simg/favicon-trans-bg-blue-mg.ico', category: 'Major' },
-  { id: 'perplexity', name: 'Perplexity', url: 'https://www.perplexity.ai/', icon: 'https://www.perplexity.ai/favicon.svg', category: 'Search' },
-  { id: 'you', name: 'You.com', url: 'https://you.com/', icon: 'https://you.com/favicon.ico', category: 'Search' },
-  { id: 'huggingchat', name: 'HuggingChat', url: 'https://huggingface.co/chat/', icon: 'https://huggingface.co/favicon.ico', category: 'Open Source' },
-  { id: 'poe', name: 'Poe', url: 'https://poe.com/', icon: 'https://poe.com/favicon.ico', category: 'Aggregator' },
-  { id: 'mistral', name: 'Mistral AI', url: 'https://chat.mistral.ai/', icon: 'https://chat.mistral.ai/favicon.ico', category: 'Open Source' },
-  { id: 'deepseek', name: 'DeepSeek', url: 'https://chat.deepseek.com/', icon: 'https://chat.deepseek.com/favicon.ico', category: 'Specialized' },
-];
+  { id: 'copilot', name: 'Microsoft Copilot', url: 'https://copilot.microsoft.com/', icon: 'https://th.bing.com/th/id/ODF.gvTtwYZxRukae9S8YAPqoA?w=32&h=32&qlt=90&pcl=fffffc&o=6&pid=1.2', category: 'Major' },
+ ];
 
 // Mock stock data generator for demonstration
 const generateMockStocks = () => {
@@ -450,7 +445,7 @@ function App() {
         }
 
         .animate-scroll {
-          animation: scroll 90s linear infinite;
+          animation: scroll 40s linear infinite;
         }
 
         .animate-scroll-reverse {
