@@ -43,13 +43,13 @@ const ALL_LLMS = [
   { id: 'gemma', name: 'Gemma', url: 'https://ai.google.dev/gemma', icon: 'https://www.gstatic.com/lamda/images/gemini_favicon_f069958c85030456e93de685481c559f160ea06b.png', category: 'Open Source' },
   { id: 'bloom', name: 'Bloom', url: 'https://huggingface.co/bigscience/bloom', icon: 'https://huggingface.co/front/assets/huggingface_logo.svg', category: 'Open Source' },
   { id: 'falcon-180b', name: 'Falcon 180B', url: 'https://huggingface.co/tiiuae/falcon-180B', icon: 'https://pngfre.com/wp-content/uploads/question-mark-42-1024x1024.png', category: 'Open Source' },
-  { id: 'vicuna', name: 'Vicuna', url: 'https://lmsys.org/blog/2023-03-30-vicuna/', icon: 'https://res.cloudinary.com/apideck/image/upload/w_128,f_auto/v1681061446/marketplaces/ckhg56iu1mkpc0b66vj7fsj3o/listings/vicuna-logo_y9rgxl.jpg', category: 'Open Source' },
+  { id: 'vicuna', name: 'Vicuna', url: 'https://chat.lmsys.org/', icon: 'https://pngfre.com/wp-content/uploads/question-mark-42-1024x1024.png', category: 'Open Source' },
   { id: 'wizardlm', name: 'WizardLM', url: 'https://github.com/nlpxucan/WizardLM', icon: 'https://pngfre.com/wp-content/uploads/question-mark-42-1024x1024.png', category: 'Open Source' },
   { id: 'openchat', name: 'OpenChat', url: 'https://openchat.team/', icon: 'https://pngfre.com/wp-content/uploads/question-mark-42-1024x1024.png', category: 'Open Source' },
   { id: 'starling', name: 'Starling', url: 'https://starling.cs.berkeley.edu/', icon: 'https://pngfre.com/wp-content/uploads/question-mark-42-1024x1024.png', category: 'Open Source' },
   { id: 'zephyr', name: 'Zephyr', url: 'https://huggingface.co/HuggingFaceH4/zephyr-7b-beta', icon: 'https://pngfre.com/wp-content/uploads/question-mark-42-1024x1024.png', category: 'Open Source' },
   { id: 'phi', name: 'Microsoft Phi', url: 'https://huggingface.co/microsoft/phi-2', icon: 'https://pngfre.com/wp-content/uploads/question-mark-42-1024x1024.png', category: 'Open Source' },
-  { id: 'qwen', name: 'Qwen', url: 'https://qwen.ai/', icon: 'https://pngfre.com/wp-content/uploads/question-mark-42-1024x1024.png', category: 'Open Source' },
+  { id: 'qwen', name: 'Qwen', url: 'https://huggingface.co/Qwen', icon: 'https://pngfre.com/wp-content/uploads/question-mark-42-1024x1024.png', category: 'Open Source' },
   
   // Chinese AI Platforms
   { id: 'ernie', name: 'ERNIE Bot', url: 'https://yiyan.baidu.com/', icon: 'https://nlp-eb.cdn.bcebos.com/logo/favicon.ico', category: 'Chinese' },
