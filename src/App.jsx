@@ -263,6 +263,79 @@ const ALL_LLMS = [
   { id: 'promptlayer', name: 'PromptLayer', url: 'https://promptlayer.com/', icon: 'https://pngfre.com/wp-content/uploads/question-mark-42-1024x1024.png', category: 'Developer' },
   { id: 'weights-biases', name: 'Weights & Biases', url: 'https://wandb.ai/', icon: 'https://pngfre.com/wp-content/uploads/question-mark-42-1024x1024.png', category: 'Developer' },
 
+  // Healthcare AI
+  { id: 'glass-health', name: 'Glass Health', url: 'https://glass.health/', icon: 'https://pngfre.com/wp-content/uploads/question-mark-42-1024x1024.png', category: 'Healthcare' },
+  { id: 'nabla', name: 'Nabla', url: 'https://www.nabla.com/', icon: 'https://pngfre.com/wp-content/uploads/question-mark-42-1024x1024.png', category: 'Healthcare' },
+  { id: 'hippocratic', name: 'Hippocratic AI', url: 'https://www.hippocraticai.com/', icon: 'https://pngfre.com/wp-content/uploads/question-mark-42-1024x1024.png', category: 'Healthcare' },
+  { id: 'ambience', name: 'Ambience Healthcare', url: 'https://www.ambiencehealthcare.com/', icon: 'https://pngfre.com/wp-content/uploads/question-mark-42-1024x1024.png', category: 'Healthcare' },
+  
+  // Legal AI
+  { id: 'casetext', name: 'CaseText', url: 'https://casetext.com/', icon: 'https://pngfre.com/wp-content/uploads/question-mark-42-1024x1024.png', category: 'Legal' },
+  { id: 'lexion', name: 'Lexion', url: 'https://www.lexion.ai/', icon: 'https://pngfre.com/wp-content/uploads/question-mark-42-1024x1024.png', category: 'Legal' },
+  { id: 'lawyaw', name: 'Lawyaw', url: 'https://www.lawyaw.com/', icon: 'https://pngfre.com/wp-content/uploads/question-mark-42-1024x1024.png', category: 'Legal' },
+  
+  // Finance AI
+  { id: 'bloomberg-gpt', name: 'BloombergGPT', url: 'https://www.bloomberg.com/', icon: 'https://pngfre.com/wp-content/uploads/question-mark-42-1024x1024.png', category: 'Finance' },
+  { id: 'alphasense', name: 'AlphaSense', url: 'https://www.alpha-sense.com/', icon: 'https://pngfre.com/wp-content/uploads/question-mark-42-1024x1024.png', category: 'Finance' },
+  { id: 'kensho', name: 'Kensho', url: 'https://www.kensho.com/', icon: 'https://pngfre.com/wp-content/uploads/question-mark-42-1024x1024.png', category: 'Finance' },
+  
+  // Data Analysis AI
+  { id: 'julius', name: 'Julius AI', url: 'https://julius.ai/', icon: 'https://pngfre.com/wp-content/uploads/question-mark-42-1024x1024.png', category: 'Data' },
+  { id: 'rows', name: 'Rows', url: 'https://rows.com/', icon: 'https://pngfre.com/wp-content/uploads/question-mark-42-1024x1024.png', category: 'Data' },
+  { id: 'equals', name: 'Equals AI', url: 'https://equals.com/', icon: 'https://pngfre.com/wp-content/uploads/question-mark-42-1024x1024.png', category: 'Data' },
+  { id: 'akkio', name: 'Akkio', url: 'https://www.akkio.com/', icon: 'https://pngfre.com/wp-content/uploads/question-mark-42-1024x1024.png', category: 'Data' },
+  
+  // Design AI
+  { id: 'uizard', name: 'Uizard', url: 'https://uizard.io/', icon: 'https://pngfre.com/wp-content/uploads/question-mark-42-1024x1024.png', category: 'Design' },
+  { id: 'galileo', name: 'Galileo AI', url: 'https://www.usegalileo.ai/', icon: 'https://pngfre.com/wp-content/uploads/question-mark-42-1024x1024.png', category: 'Design' },
+  { id: 'diagram', name: 'Diagram', url: 'https://diagram.com/', icon: 'https://pngfre.com/wp-content/uploads/question-mark-42-1024x1024.png', category: 'Design' },
+  { id: 'magician', name: 'Magician', url: 'https://magician.design/', icon: 'https://pngfre.com/wp-content/uploads/question-mark-42-1024x1024.png', category: 'Design' },
+  
+  // Translation AI
+  { id: 'deepl', name: 'DeepL', url: 'https://www.deepl.com/', icon: 'https://pngfre.com/wp-content/uploads/question-mark-42-1024x1024.png', category: 'Translation' },
+  { id: 'papago', name: 'Papago', url: 'https://papago.naver.com/', icon: 'https://pngfre.com/wp-content/uploads/question-mark-42-1024x1024.png', category: 'Translation' },
+  { id: 'unbabel', name: 'Unbabel', url: 'https://unbabel.com/', icon: 'https://pngfre.com/wp-content/uploads/question-mark-42-1024x1024.png', category: 'Translation' },
+  
+  // Agent Frameworks
+  { id: 'crew-ai', name: 'CrewAI', url: 'https://www.crewai.com/', icon: 'https://pngfre.com/wp-content/uploads/question-mark-42-1024x1024.png', category: 'Agents' },
+  { id: 'superagi', name: 'SuperAGI', url: 'https://superagi.com/', icon: 'https://pngfre.com/wp-content/uploads/question-mark-42-1024x1024.png', category: 'Agents' },
+  { id: 'agentgpt', name: 'AgentGPT', url: 'https://agentgpt.reworkd.ai/', icon: 'https://pngfre.com/wp-content/uploads/question-mark-42-1024x1024.png', category: 'Agents' },
+  { id: 'auto-gpt', name: 'Auto-GPT', url: 'https://github.com/Significant-Gravitas/AutoGPT', icon: 'https://pngfre.com/wp-content/uploads/question-mark-42-1024x1024.png', category: 'Agents' },
+  { id: 'babyagi', name: 'BabyAGI', url: 'https://github.com/yoheinakajima/babyagi', icon: 'https://pngfre.com/wp-content/uploads/question-mark-42-1024x1024.png', category: 'Agents' },
+  { id: 'langflow', name: 'Langflow', url: 'https://www.langflow.org/', icon: 'https://pngfre.com/wp-content/uploads/question-mark-42-1024x1024.png', category: 'Agents' },
+  { id: 'flowise', name: 'Flowise', url: 'https://flowiseai.com/', icon: 'https://pngfre.com/wp-content/uploads/question-mark-42-1024x1024.png', category: 'Agents' },
+  
+  // Local/Offline AI
+  { id: 'jan', name: 'Jan', url: 'https://jan.ai/', icon: 'https://pngfre.com/wp-content/uploads/question-mark-42-1024x1024.png', category: 'Local' },
+  { id: 'lm-studio', name: 'LM Studio', url: 'https://lmstudio.ai/', icon: 'https://pngfre.com/wp-content/uploads/question-mark-42-1024x1024.png', category: 'Local' },
+  { id: 'gpt4all', name: 'GPT4All', url: 'https://gpt4all.io/', icon: 'https://pngfre.com/wp-content/uploads/question-mark-42-1024x1024.png', category: 'Local' },
+  { id: 'privateai', name: 'PrivateAI', url: 'https://www.private-ai.com/', icon: 'https://pngfre.com/wp-content/uploads/question-mark-42-1024x1024.png', category: 'Local' },
+  { id: 'text-generation-webui', name: 'Text Gen WebUI', url: 'https://github.com/oobabooga/text-generation-webui', icon: 'https://pngfre.com/wp-content/uploads/question-mark-42-1024x1024.png', category: 'Local' },
+  
+  // Search Engines with AI
+  { id: 'brave-leo', name: 'Brave Leo', url: 'https://brave.com/leo/', icon: 'https://pngfre.com/wp-content/uploads/question-mark-42-1024x1024.png', category: 'Search' },
+  { id: 'neeva', name: 'Neeva', url: 'https://neeva.com/', icon: 'https://pngfre.com/wp-content/uploads/question-mark-42-1024x1024.png', category: 'Search' },
+  { id: 'waldo', name: 'Waldo', url: 'https://waldo.fyi/', icon: 'https://pngfre.com/wp-content/uploads/question-mark-42-1024x1024.png', category: 'Search' },
+  
+  // Robotics AI
+  { id: 'figure-ai', name: 'Figure AI', url: 'https://www.figure.ai/', icon: 'https://pngfre.com/wp-content/uploads/question-mark-42-1024x1024.png', category: 'Robotics' },
+  { id: '1x-technologies', name: '1X Technologies', url: 'https://www.1x.tech/', icon: 'https://pngfre.com/wp-content/uploads/question-mark-42-1024x1024.png', category: 'Robotics' },
+  
+  // Climate & Science AI
+  { id: 'climate-ai', name: 'ClimateAI', url: 'https://climate.ai/', icon: 'https://pngfre.com/wp-content/uploads/question-mark-42-1024x1024.png', category: 'Science' },
+  { id: 'deepmind-alphafold', name: 'AlphaFold', url: 'https://alphafold.ebi.ac.uk/', icon: 'https://pngfre.com/wp-content/uploads/question-mark-42-1024x1024.png', category: 'Science' },
+  
+  // Gaming AI
+  { id: 'scenario', name: 'Scenario', url: 'https://www.scenario.com/', icon: 'https://pngfre.com/wp-content/uploads/question-mark-42-1024x1024.png', category: 'Gaming' },
+  { id: 'promethean-ai', name: 'Promethean AI', url: 'https://www.prometheanai.com/', icon: 'https://pngfre.com/wp-content/uploads/question-mark-42-1024x1024.png', category: 'Gaming' },
+  { id: 'inworld', name: 'Inworld AI', url: 'https://www.inworld.ai/', icon: 'https://pngfre.com/wp-content/uploads/question-mark-42-1024x1024.png', category: 'Gaming' },
+  { id: 'charisma', name: 'Charisma.ai', url: 'https://charisma.ai/', icon: 'https://pngfre.com/wp-content/uploads/question-mark-42-1024x1024.png', category: 'Gaming' },
+  
+  // Social & Companion AI
+  { id: 'replika', name: 'Replika', url: 'https://replika.com/', icon: 'https://pngfre.com/wp-content/uploads/question-mark-42-1024x1024.png', category: 'Social' },
+  { id: 'kindroid', name: 'Kindroid', url: 'https://kindroid.ai/', icon: 'https://pngfre.com/wp-content/uploads/question-mark-42-1024x1024.png', category: 'Social' },
+  { id: 'nomi', name: 'Nomi AI', url: 'https://nomi.ai/', icon: 'https://pngfre.com/wp-content/uploads/question-mark-42-1024x1024.png', category: 'Social' },
+  { id: 'chai', name: 'Chai', url: 'https://www.chai-research.com/', icon: 'https://pngfre.com/wp-content/uploads/question-mark-42-1024x1024.png', category: 'Social' },
 ];
 
 function App() {
