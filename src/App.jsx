@@ -222,10 +222,10 @@ const ALL_LLMS = [
   { id: 'together', name: 'Together AI', url: 'https://www.together.ai/', icon: 'https://th.bing.com/th/id/ODF.pig0nnIrfHMVF3MgAf3eTg?w=32&h=32&qlt=90&pcl=fffffc&o=6&pid=1.2', category: 'Experimental' },
   { id: 'fireworks', name: 'Fireworks AI', url: 'https://fireworks.ai/', icon: 'https://fireworks.ai/favicon.ico', category: 'Experimental' },
   { id: 'replicate', name: 'Replicate', url: 'https://replicate.com/', icon: 'https://th.bing.com/th/id/ODF.QV2HMKeZiS85NOkilQLeNg?w=32&h=32&qlt=90&pcl=fffffa&o=6&pid=1.2', category: 'Experimental' },
-  { id: 'groq', name: 'Groq', url: 'https://groq.com/', icon: 'https://pngfre.com/wp-content/uploads/question-mark-42-1024x1024.png', category: 'Experimental' },
-  { id: 'anyscale', name: 'Anyscale', url: 'https://www.anyscale.com/', icon: 'https://pngfre.com/wp-content/uploads/question-mark-42-1024x1024.png', category: 'Experimental' },
-  { id: 'cerebras', name: 'Cerebras', url: 'https://www.cerebras.net/', icon: 'https://pngfre.com/wp-content/uploads/question-mark-42-1024x1024.png', category: 'Experimental' },
-  { id: 'sambanova', name: 'SambaNova', url: 'https://sambanova.ai/', icon: 'https://pngfre.com/wp-content/uploads/question-mark-42-1024x1024.png', category: 'Experimental' },
+  { id: 'groq', name: 'Groq', url: 'https://groq.com/', icon: 'https://th.bing.com/th/id/ODF.V2DuCTZSZyT9-DGji6sZ6A?w=32&h=32&qlt=90&pcl=fffffc&o=6&pid=1.2', category: 'Experimental' },
+  { id: 'anyscale', name: 'Anyscale', url: 'https://www.anyscale.com/', icon: 'https://th.bing.com/th/id/ODF.MBa9pSCQ4CBL9VGfy0a0vw?w=32&h=32&qlt=90&pcl=fffffc&o=6&pid=1.2', category: 'Experimental' },
+  { id: 'cerebras', name: 'Cerebras', url: 'https://www.cerebras.net/', icon: 'https://th.bing.com/th/id/ODF.Q05r-ivBCrTtJL3O27dLkw?w=32&h=32&qlt=90&pcl=fffffc&o=6&pid=1.2', category: 'Experimental' },
+  { id: 'sambanova', name: 'SambaNova', url: 'https://sambanova.ai/', icon: 'https://th.bing.com/th/id/ODF.Qc-ZFkBVmiWPYqprvMnm_Q?w=32&h=32&qlt=90&pcl=fffffa&o=6&pid=1.2', category: 'Experimental' },
   
   // Productivity AI
   { id: 'notion', name: 'Notion AI', url: 'https://www.notion.so/product/ai', icon: 'https://www.notion.so/images/favicon.ico', category: 'Productivity' },
