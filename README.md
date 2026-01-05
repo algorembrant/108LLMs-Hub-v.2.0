@@ -17,9 +17,11 @@
 
 # Option *you only have this files*
 
+![alt text](image.png)
 
+npm install
 
-
+npm run dev
 
 
 
