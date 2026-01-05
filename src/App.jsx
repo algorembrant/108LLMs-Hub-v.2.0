@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { X, ExternalLink, Grip, AlertCircle, Layout, Grid, Search } from 'lucide-react';
 
+
 const ALL_LLMS = [
   // Major AI Assistants
   { id: 'chatgpt', name: 'ChatGPT', url: 'https://chatgpt.com/', icon: 'https://cdn.oaistatic.com/_next/static/media/apple-touch-icon.59f2e898.png', category: 'Major' },
@@ -34,6 +35,8 @@ const ALL_LLMS = [
   { id: 'lmsys', name: 'LMSYS Chat', url: 'https://chat.lmsys.org/', icon: 'https://th.bing.com/th/id/ODF.HX1F6ABunv1ieMmqjCr7LQ?w=32&h=32&qlt=90&pcl=fffffa&o=6&pid=1.2', category: 'Open Source' },
   { id: 'ollama', name: 'Ollama', url: 'https://ollama.com/', icon: 'https://ollama.com/public/icon-32x32.png', category: 'Open Source' },
   { id: 'grok', name: 'Grok', url: 'https://grok.x.ai/', icon: 'https://abs.twimg.com/favicons/twitter.3.ico', category: 'Open Source' },
+  { id: 'gemma', name: 'Gemma', url: 'https://ai.google.dev/gemma', icon: 'https://www.gstatic.com/lamda/images/gemini_favicon_f069958c85030456e93de685481c559f160ea06b.png', category: 'Open Source' },
+  { id: 'bloom', name: 'Bloom', url: 'https://huggingface.co/bigscience/bloom', icon: 'https://huggingface.co/front/assets/huggingface_logo.svg', category: 'Open Source' },
   
   // Chinese AI Platforms
   { id: 'ernie', name: 'ERNIE Bot', url: 'https://yiyan.baidu.com/', icon: 'https://nlp-eb.cdn.bcebos.com/logo/favicon.ico', category: 'Chinese' },
@@ -49,6 +52,43 @@ const ALL_LLMS = [
   { id: '01ai', name: 'Yi', url: 'https://www.01.ai/', icon: 'https://www.01.ai/favicon.ico', category: 'Chinese' },
   { id: 'step', name: 'StepChat', url: 'https://stepchat.cn/', icon: 'https://pngfre.com/wp-content/uploads/question-mark-42-1024x1024.png', category: 'Chinese' },
   { id: 'yuanbao', name: 'Yuanbao', url: 'https://yuanbao.tencent.com/', icon: 'https://yuanbao.tencent.com/favicon.ico', category: 'Chinese' },
+  
+  // Indian AI Platforms
+  { id: 'bharatgpt', name: 'BharatGPT', url: 'https://bharatgpt.ai/', icon: 'https://pngfre.com/wp-content/uploads/question-mark-42-1024x1024.png', category: 'Indian' },
+  { id: 'krutrim', name: 'Krutrim', url: 'https://www.olakrutrim.com/', icon: 'https://pngfre.com/wp-content/uploads/question-mark-42-1024x1024.png', category: 'Indian' },
+  { id: 'hanooman', name: 'Hanooman AI', url: 'https://www.seetalabs.com/', icon: 'https://pngfre.com/wp-content/uploads/question-mark-42-1024x1024.png', category: 'Indian' },
+  { id: 'ai4bharat', name: 'AI4Bharat', url: 'https://ai4bharat.iitm.ac.in/', icon: 'https://pngfre.com/wp-content/uploads/question-mark-42-1024x1024.png', category: 'Indian' },
+  { id: 'sarvam', name: 'Sarvam AI', url: 'https://www.sarvam.ai/', icon: 'https://pngfre.com/wp-content/uploads/question-mark-42-1024x1024.png', category: 'Indian' },
+  
+  // Middle East & Arabic AI
+  { id: 'jais', name: 'JAIS', url: 'https://inceptioniai.ai/jais/', icon: 'https://pngfre.com/wp-content/uploads/question-mark-42-1024x1024.png', category: 'Arabic' },
+  { id: 'falcon', name: 'Falcon AI', url: 'https://falconllm.tii.ae/', icon: 'https://pngfre.com/wp-content/uploads/question-mark-42-1024x1024.png', category: 'Arabic' },
+  { id: 'allam', name: 'ALLaM', url: 'https://www.sdaia.gov.sa/en/', icon: 'https://pngfre.com/wp-content/uploads/question-mark-42-1024x1024.png', category: 'Arabic' },
+  { id: 'humain', name: 'Humain Chat', url: 'https://humain.sa/', icon: 'https://pngfre.com/wp-content/uploads/question-mark-42-1024x1024.png', category: 'Arabic' },
+  
+  // Southeast Asian AI
+  { id: 'sealion', name: 'SEA-LION', url: 'https://aisingapore.org/aiproducts/sea-lion/', icon: 'https://pngfre.com/wp-content/uploads/question-mark-42-1024x1024.png', category: 'Southeast Asian' },
+  { id: 'seallm', name: 'SeaLLM', url: 'https://damo.alibaba.com/', icon: 'https://pngfre.com/wp-content/uploads/question-mark-42-1024x1024.png', category: 'Southeast Asian' },
+  
+  // Korean AI Platforms
+  { id: 'clova', name: 'Clova X', url: 'https://clova-x.naver.com/', icon: 'https://th.bing.com/th/id/ODF.uK-_L73tIIHutUT4oNX8aQ?w=32&h=32&qlt=91&pcl=fffffa&o=6&pid=1.2', category: 'Korean' },
+  { id: 'wrtn', name: 'Wrtn', url: 'https://wrtn.ai/', icon: 'https://th.bing.com/th/id/ODF.XZquXv8QTpZQMnMMqeKzCA?w=32&h=32&qlt=90&pcl=fffffa&o=6&pid=1.2', category: 'Korean' },
+  { id: 'exaone', name: 'Exaone', url: 'https://www.lgresearch.ai/', icon: 'https://pngfre.com/wp-content/uploads/question-mark-42-1024x1024.png', category: 'Korean' },
+  { id: 'hyperclova', name: 'HyperClova X', url: 'https://www.navercorp.com/service/clovaX', icon: 'https://pngfre.com/wp-content/uploads/question-mark-42-1024x1024.png', category: 'Korean' },
+  { id: 'kakaobrain', name: 'KoGPT', url: 'https://www.kakaobrain.com/', icon: 'https://avatars.githubusercontent.com/u/25736994?s=200&v=4', category: 'Korean' },
+  { id: 'solar', name: 'Solar Pro', url: 'https://www.upstage.ai/', icon: 'https://pngfre.com/wp-content/uploads/question-mark-42-1024x1024.png', category: 'Korean' },
+  
+  // Japanese AI Platforms
+  { id: 'rinna', name: 'Rinna AI', url: 'https://rinna.co.jp/AI-rinna/', icon: 'https://th.bing.com/th/id/ODF.E-18kEsU8XoEnRg-exXcaQ?w=32&h=32&qlt=95&pcl=fffffa&o=6&pid=1.2', category: 'Japanese' },
+  { id: 'sakana', name: 'Sakana AI', url: 'https://sakana.ai/', icon: 'https://th.bing.com/th/id/ODF.XxZFQYG73wfUy_KqLcf0FA?w=32&h=32&qlt=90&pcl=fffffc&o=6&pid=1.2', category: 'Japanese' },
+  
+  // European AI Platforms
+  { id: 'aleph-alpha', name: 'Aleph Alpha', url: 'https://www.aleph-alpha.com/', icon: 'https://pngfre.com/wp-content/uploads/question-mark-42-1024x1024.png', category: 'European' },
+  { id: 'lighton', name: 'LightOn', url: 'https://www.lighton.ai/', icon: 'https://pngfre.com/wp-content/uploads/question-mark-42-1024x1024.png', category: 'European' },
+  { id: 'yandex', name: 'YandexGPT', url: 'https://ya.ru/', icon: 'https://ya.ru/favicon.ico', category: 'European' },
+  
+  // Latin American AI
+  { id: 'latamgpt', name: 'LatamGPT', url: 'https://cenia.cl/', icon: 'https://pngfre.com/wp-content/uploads/question-mark-42-1024x1024.png', category: 'Latin American' },
   
   // Specialized AI
   { id: 'character', name: 'Character.AI', url: 'https://character.ai/', icon: 'https://th.bing.com/th/id/ODF.4FRiwrgK3Me4b6XYmes99Q?w=32&h=32&qlt=91&pcl=fffffa&o=6&pid=1.2', category: 'Specialized' },
@@ -74,20 +114,13 @@ const ALL_LLMS = [
   { id: 'bolt', name: 'Bolt.new', url: 'https://bolt.new/', icon: 'https://th.bing.com/th/id/ODF.uHp_E4IPfJHBvCfeKl_3rQ?w=32&h=32&qlt=90&pcl=fffffa&o=6&pid=1.2', category: 'Coding' },
   { id: 'lovable', name: 'Lovable', url: 'https://lovable.dev/', icon: 'https://lovable.dev/favicon.ico', category: 'Coding' },
   
-  // Regional AI
-  { id: 'clova', name: 'Clova X', url: 'https://clova-x.naver.com/', icon: 'https://th.bing.com/th/id/ODF.uK-_L73tIIHutUT4oNX8aQ?w=32&h=32&qlt=91&pcl=fffffa&o=6&pid=1.2', category: 'Regional' },
-  { id: 'wrtn', name: 'Wrtn', url: 'https://wrtn.ai/', icon: 'https://th.bing.com/th/id/ODF.XZquXv8QTpZQMnMMqeKzCA?w=32&h=32&qlt=90&pcl=fffffa&o=6&pid=1.2', category: 'Regional' },
-  { id: 'yandex', name: 'YandexGPT', url: 'https://ya.ru/', icon: 'https://ya.ru/favicon.ico', category: 'Regional' },
-  { id: 'rinna', name: 'Rinna AI', url: 'https://rinna.co.jp/AI-rinna/', icon: 'https://th.bing.com/th/id/ODF.E-18kEsU8XoEnRg-exXcaQ?w=32&h=32&qlt=95&pcl=fffffa&o=6&pid=1.2', category: 'Regional' },
-  { id: 'sakana', name: 'Sakana AI', url: 'https://sakana.ai/', icon: 'https://th.bing.com/th/id/ODF.XxZFQYG73wfUy_KqLcf0FA?w=32&h=32&qlt=90&pcl=fffffc&o=6&pid=1.2', category: 'Regional' },
-  { id: 'kakaobrain', name: 'KoGPT', url: 'https://www.kakaobrain.com/', icon: 'https://avatars.githubusercontent.com/u/25736994?s=200&v=4', category: 'Regional' },
-  
   // Educational AI
   { id: 'khanmigo', name: 'Khanmigo', url: 'https://www.khanacademy.org/khan-labs', icon: 'https://cdn.kastatic.org/images/favicon.ico', category: 'Education' },
   { id: 'socratic', name: 'Socratic', url: 'https://socratic.org/', icon: 'https://th.bing.com/th/id/ODF.i8c2Bw0gF-1P1hRvbKucwQ?w=32&h=32&qlt=90&pcl=fffffa&o=6&pid=1.2', category: 'Education' },
   { id: 'quizlet', name: 'Quizlet AI', url: 'https://quizlet.com/', icon: 'https://quizlet.com/favicon.ico', category: 'Education' },
   { id: 'gradescope', name: 'Gradescope AI', url: 'https://www.gradescope.com/', icon: 'https://www.gradescope.com/favicon.ico', category: 'Education' },
   { id: 'tutorly', name: 'Tutorly.ai', url: 'https://www.tutorly.ai/', icon: 'https://www.tutorly.ai/favicon.ico', category: 'Education' },
+  { id: 'duolingo', name: 'Duolingo Max', url: 'https://www.duolingo.com/max', icon: 'https://www.duolingo.com/favicon.ico', category: 'Education' },
   
   // Creative AI
   { id: 'midjourney', name: 'Midjourney', url: 'https://www.midjourney.com/', icon: 'https://th.bing.com/th/id/ODF.3sJnfMVcw7tOfxzyjgrHag?w=32&h=32&qlt=90&pcl=fffffc&o=6&pid=1.2', category: 'Creative' },
