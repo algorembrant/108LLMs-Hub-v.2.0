@@ -1,8 +1,8 @@
 ### AiQuasarous Global<br>
 Drag-drop-open your favorite Model <br>
 ***264 AI platforms** available worldwide in one place!*<br>
->**NO SIGN-IN, NO SUBSCRIPTION, NO HASSLE,** and access **ALL** AI platforms for **FREE!** with just a one-click button away <br>
->Drag-drop-open your favorite Model in **ONE** place! accross 35 categories!
+>**NO SIGN-IN, NO SUBSCRIPTION, NO IP-ADDRESS LEAKAGE, NO HASSLE,** and access **ALL** AI platforms for **FREE!** with just a one-click button away <br>
+>Drag-drop-open your favorite Model in **ONE** place! across 35 categories!
 
 
 [![alt text](image-4.png)](https://aiqg.vercel.app/)
