@@ -19,11 +19,42 @@
 
 ![alt text](image.png)
 
+**Step 1:** Have exactly all files needed (shown above), copy or fork
+
+**Step 2:** Go to your terminal, and
+
+**Step 3:** bash to install dependencies, then
+
+```bash
 npm install
+```
 
+**Step 4:** bash to run the app locally
+
+```bash
 npm run dev
+```
+
+**Step 5:** Enjoy
 
 
+### LLM Hub with all 108 AI platforms accros the world!
+
+- **Major (4):** ChatGPT, Claude, Gemini, Copilot
+- **Search (7):** Perplexity, You.com, Phind, Andi, Metaphor, Komo, Consensus, Elicit, ScholarAI
+- **Multi-Model (6):** Poe, HuggingChat, Forefront, Ora.ai, Nat.dev, ChatHub
+- **Open Source (6):** Meta AI, Mistral, DeepSeek, LMSYS, Ollama, Grok
+- **Chinese (13):** ERNIE, Tongyi, ChatGLM, Spark, Tiangong, SenseChat, Doubao, Kimi, Wenxin, MiniMax, Yi, StepChat, Yuanbao
+- **Specialized (8):** Character.AI, Jasper, Writesonic, Copy.ai, Rytr, ChatPDF, Humata, ChatDOC
+- **Coding (12):** Codeium, Tabnine, Replit, Cursor, GitHub Copilot, CodeWhisperer, CodiumAI, Cody, Aider, v0, Bolt.new, Lovable
+- **Regional (6):** Clova X, Wrtn, YandexGPT, Rinna, Sakana, KoGPT
+- **Education (5):** Khanmigo, Socratic, Quizlet, Gradescope, Tutorly
+- **Creative (10):** Midjourney, DALL-E, Leonardo, Playground, Stable Diffusion, Ideogram, Flux, Runway, Pika, Sora
+- **Voice (5):** ElevenLabs, Murf, Resemble, Descript, Speechify
+- **Experimental (7):** Pi, Cohere, AI21, OpenRouter, Together AI, Fireworks, Replicate
+- **Productivity (7):** Notion, Mem, Otter, Fireflies, Grammarly, Wordtune, Chatbase
+- **Business (5):** Harvey, Intercom, Drift, Ada, Einstein GPT
+- **Developer (5):** Claude Console, OpenAI Playground, Vercel AI, LangChain, LlamaIndex
 
 
 
