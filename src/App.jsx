@@ -84,9 +84,9 @@ const ALL_LLMS = [
   { id: 'airavata', name: 'Airavata', url: 'https://ai4bharat.iitm.ac.in/', icon: 'https://pngfre.com/wp-content/uploads/question-mark-42-1024x1024.png', category: 'Indian' },
   
   // Middle East & Arabic AI
-  { id: 'jais', name: 'JAIS', url: 'https://inceptioniai.ai/jais/', icon: 'https://pngfre.com/wp-content/uploads/question-mark-42-1024x1024.png', category: 'Arabic' },
-  { id: 'falcon', name: 'Falcon AI', url: 'https://falconllm.tii.ae/', icon: 'https://pngfre.com/wp-content/uploads/question-mark-42-1024x1024.png', category: 'Arabic' },
-  { id: 'allam', name: 'ALLaM', url: 'https://www.sdaia.gov.sa/en/', icon: 'https://pngfre.com/wp-content/uploads/question-mark-42-1024x1024.png', category: 'Arabic' },
+  { id: 'jais', name: 'JAIS', url: 'https://inceptioniai.ai/jais/', icon: 'https://th.bing.com/th/id/ODF.g6lSy1ZwCzuapMaGl9OKeA?w=32&h=32&qlt=90&pcl=fffffc&o=6&pid=1.2', category: 'Arabic' },
+  { id: 'falcon', name: 'Falcon AI', url: 'https://falconllm.tii.ae/', icon: 'https://th.bing.com/th/id/ODF.VIagT0QUhG9fhZpb5wjmUQ?w=32&h=32&qlt=90&pcl=fffffc&o=6&pid=1.2', category: 'Arabic' },
+  { id: 'allam', name: 'ALLaM', url: 'https://www.sdaia.gov.sa/en/', icon: 'https://www.bing.com/th/id/OIP.l-u7zlf9tKV5FJs7uOp07QAAAA?w=160&h=211&c=8&rs=1&qlt=90&o=6&pid=3.1&rm=2', category: 'Arabic' },
   { id: 'humain', name: 'Humain Chat', url: 'https://humain.sa/', icon: 'https://pngfre.com/wp-content/uploads/question-mark-42-1024x1024.png', category: 'Arabic' },
   { id: 'arabert', name: 'AraBERT', url: 'https://huggingface.co/aubmindlab/bert-base-arabertv2', icon: 'https://pngfre.com/wp-content/uploads/question-mark-42-1024x1024.png', category: 'Arabic' },
   { id: 'aragpt', name: 'AraGPT', url: 'https://github.com/aub-mind/arabert', icon: 'https://pngfre.com/wp-content/uploads/question-mark-42-1024x1024.png', category: 'Arabic' },
