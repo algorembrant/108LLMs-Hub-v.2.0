@@ -458,7 +458,7 @@ function App() {
   const ITEMS_PER_PAGE = 50;
 
   // ADJUSTMENT: Mobile detection state
-  const [isMobile, setIsMobile] = useState(window.innerWidth < 1000);
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 1600);
 
   const categories = useMemo(() => {
     return ['All', ...new Set(ALL_LLMS.map(llm => llm.category))].sort();
