@@ -267,33 +267,31 @@ const ALL_LLMS = [
   { id: 'weights-biases', name: 'Weights & Biases', url: 'https://wandb.ai/', icon: 'https://th.bing.com/th/id/ODF.VN1pxcrgd8x6yc5SQhj-cA?w=32&h=32&qlt=90&pcl=fffffa&o=6&pid=1.2', category: 'Developer' },
 
   // Healthcare AI
-  { id: 'glass-health', name: 'Glass Health', url: 'https://glass.health/', icon: 'https://pngfre.com/wp-content/uploads/question-mark-42-1024x1024.png', category: 'Healthcare' },
-  { id: 'nabla', name: 'Nabla', url: 'https://www.nabla.com/', icon: 'https://pngfre.com/wp-content/uploads/question-mark-42-1024x1024.png', category: 'Healthcare' },
-  { id: 'hippocratic', name: 'Hippocratic AI', url: 'https://www.hippocraticai.com/', icon: 'https://pngfre.com/wp-content/uploads/question-mark-42-1024x1024.png', category: 'Healthcare' },
-  { id: 'ambience', name: 'Ambience Healthcare', url: 'https://www.ambiencehealthcare.com/', icon: 'https://pngfre.com/wp-content/uploads/question-mark-42-1024x1024.png', category: 'Healthcare' },
+  { id: 'glass-health', name: 'Glass Health', url: 'https://glass.health/', icon: 'https://th.bing.com/th/id/ODF.-sYt0hoUclRsrruG-hy4TQ?w=32&h=32&qlt=90&pcl=fffffa&o=6&pid=1.2', category: 'Healthcare' },
+  { id: 'nabla', name: 'Nabla', url: 'https://www.nabla.com/', icon: 'https://th.bing.com/th/id/ODF.qg_i1Yp23CEbOjUJkmzyMA?w=32&h=32&qlt=90&pcl=fffffa&o=6&pid=1.2', category: 'Healthcare' },
+  { id: 'hippocratic', name: 'Hippocratic AI', url: 'https://www.hippocraticai.com/', icon: 'https://th.bing.com/th/id/ODF.qRrVQqHuHMCbM8wxTB8Pgg?w=32&h=32&qlt=90&pcl=fffffa&o=6&pid=1.2', category: 'Healthcare' },
+  { id: 'ambience', name: 'Ambience Healthcare', url: 'https://www.ambiencehealthcare.com/', icon: 'https://th.bing.com/th/id/ODF.j7rD-cB0jtn9D72vfshbwg?w=32&h=32&qlt=90&pcl=fffffa&o=6&pid=1.2', category: 'Healthcare' },
   
   // Legal AI
-  { id: 'casetext', name: 'CaseText', url: 'https://casetext.com/', icon: 'https://pngfre.com/wp-content/uploads/question-mark-42-1024x1024.png', category: 'Legal' },
-  { id: 'lexion', name: 'Lexion', url: 'https://www.lexion.ai/', icon: 'https://pngfre.com/wp-content/uploads/question-mark-42-1024x1024.png', category: 'Legal' },
-  { id: 'lawyaw', name: 'Lawyaw', url: 'https://www.lawyaw.com/', icon: 'https://pngfre.com/wp-content/uploads/question-mark-42-1024x1024.png', category: 'Legal' },
+  { id: 'lexion', name: 'Lexion', url: 'https://www.lexion.ai/', icon: 'https://th.bing.com/th/id/ODF.h8RntjN_qP6B_I0CSEKDOA?w=32&h=32&qlt=90&pcl=fffffa&o=6&pid=1.2', category: 'Legal' },
+  { id: 'lawy', name: 'LawY', url: 'https://www.lawy.ai/', icon: 'https://th.bing.com/th/id/ODF.cDEdfyRJcH2_EmWhcqRU2Q?w=32&h=32&qlt=90&pcl=fffffc&o=6&pid=1.2', category: 'Legal' },
   
   // Finance AI
-  { id: 'bloomberg-gpt', name: 'BloombergGPT', url: 'https://www.bloomberg.com/', icon: 'https://pngfre.com/wp-content/uploads/question-mark-42-1024x1024.png', category: 'Finance' },
-  { id: 'alphasense', name: 'AlphaSense', url: 'https://www.alpha-sense.com/', icon: 'https://pngfre.com/wp-content/uploads/question-mark-42-1024x1024.png', category: 'Finance' },
-  { id: 'kensho', name: 'Kensho', url: 'https://www.kensho.com/', icon: 'https://pngfre.com/wp-content/uploads/question-mark-42-1024x1024.png', category: 'Finance' },
+  { id: 'bloomberg-gpt', name: 'BloombergGPT', url: 'https://www.bloomberg.com/', icon: 'https://th.bing.com/th/id/ODF.xYLsEUeXtarNhNI29Cey_w?w=32&h=32&qlt=90&pcl=fffffa&o=6&pid=1.2', category: 'Finance' },
+  { id: 'alphasense', name: 'AlphaSense', url: 'https://www.alpha-sense.com/', icon: 'https://th.bing.com/th/id/ODF.xQcbkKaOihNGE8uCy7N1QQ?w=32&h=32&qlt=90&pcl=fffffc&o=6&pid=1.2', category: 'Finance' },
+  { id: 'kensho', name: 'Kensho', url: 'https://www.kensho.com/', icon: 'https://th.bing.com/th/id/ODF.nc0ycvUp1BYB1PDBPByg1g?w=32&h=32&qlt=90&pcl=fffffa&o=6&pid=1.2', category: 'Finance' },
   
   // Data Analysis AI
-  { id: 'julius', name: 'Julius AI', url: 'https://julius.ai/', icon: 'https://pngfre.com/wp-content/uploads/question-mark-42-1024x1024.png', category: 'Data' },
-  { id: 'rows', name: 'Rows', url: 'https://rows.com/', icon: 'https://pngfre.com/wp-content/uploads/question-mark-42-1024x1024.png', category: 'Data' },
-  { id: 'equals', name: 'Equals AI', url: 'https://equals.com/', icon: 'https://pngfre.com/wp-content/uploads/question-mark-42-1024x1024.png', category: 'Data' },
-  { id: 'akkio', name: 'Akkio', url: 'https://www.akkio.com/', icon: 'https://pngfre.com/wp-content/uploads/question-mark-42-1024x1024.png', category: 'Data' },
+  { id: 'julius', name: 'Julius AI', url: 'https://julius.ai/', icon: 'https://th.bing.com/th/id/ODF.-6CVlBOPyDxkihwsDgK6_w?w=32&h=32&qlt=90&pcl=fffffa&o=6&pid=1.2', category: 'Data' },
+  { id: 'rows', name: 'Rows', url: 'https://rows.com/', icon: 'https://th.bing.com/th/id/ODF.PPcXODVK_Ah8UxOUypp8Uw?w=16&h=16&c=10&o=6&pid=genserp&rm=2', category: 'Data' },
+  { id: 'equals', name: 'Equals AI', url: 'https://equals.com/', icon: 'https://th.bing.com/th/id/ODF.QZPHf281PA7TERJabsUamA?w=32&h=32&qlt=90&pcl=fffffa&o=6&pid=1.2', category: 'Data' },
+  { id: 'akkio', name: 'Akkio', url: 'https://www.akkio.com/', icon: 'https://th.bing.com/th/id/ODF.XtLVmw7k05i4PevSEUm3CA?w=32&h=32&qlt=90&pcl=fffffc&o=6&pid=1.2', category: 'Data' },
   
   // Design AI
-  { id: 'uizard', name: 'Uizard', url: 'https://uizard.io/', icon: 'https://pngfre.com/wp-content/uploads/question-mark-42-1024x1024.png', category: 'Design' },
-  { id: 'galileo', name: 'Galileo AI', url: 'https://www.usegalileo.ai/', icon: 'https://pngfre.com/wp-content/uploads/question-mark-42-1024x1024.png', category: 'Design' },
-  { id: 'diagram', name: 'Diagram', url: 'https://diagram.com/', icon: 'https://pngfre.com/wp-content/uploads/question-mark-42-1024x1024.png', category: 'Design' },
-  { id: 'magician', name: 'Magician', url: 'https://magician.design/', icon: 'https://pngfre.com/wp-content/uploads/question-mark-42-1024x1024.png', category: 'Design' },
-  
+  { id: 'uizard', name: 'Uizard', url: 'https://uizard.io/', icon: 'https://th.bing.com/th/id/ODF.ZfX40jtXSBvNS_YCRFsg2A?w=32&h=32&qlt=90&pcl=fffffc&o=6&pid=1.2', category: 'Design' },
+  { id: 'galileo', name: 'Galileo AI', url: 'https://www.usegalileo.ai/', icon: 'https://th.bing.com/th/id/ODF.U6x2rc7CWi5aOQDkuG_yzw?w=32&h=32&qlt=90&pcl=fffffc&o=6&pid=1.2', category: 'Design' },
+  { id: 'diagramai', name: 'Diagramai', url: 'https://diagramai.dev/', icon: 'https://th.bing.com/th/id/ODF.XVO4DKZimFavZXBlt2iavA?w=32&h=32&qlt=90&pcl=fffffa&o=6&pid=1.2', category: 'Design' },
+
   // Translation AI
   { id: 'deepl', name: 'DeepL', url: 'https://www.deepl.com/', icon: 'https://th.bing.com/th/id/ODF.jIVFCE9QNMa8gmxF89wEww?w=32&h=32&qlt=90&pcl=fffffc&o=6&pid=1.2', category: 'Translation' },
   { id: 'papago', name: 'Papago', url: 'https://papago.naver.com/', icon: 'https://th.bing.com/th/id/ODF.V04IqIOCWasl09E6Lof57w?w=32&h=32&qlt=90&pcl=fffffc&o=6&pid=1.2', category: 'Translation' },
