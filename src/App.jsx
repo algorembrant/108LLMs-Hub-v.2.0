@@ -120,17 +120,15 @@ const ALL_LLMS = [
   { id: 'likasgpt', name: 'LikásGPT', url: 'https://www.infinivan.com/infinivan-and-up-diliman-unveil-likasgpt-ai-powered-crm-designed-to-understand-the-filipino-voice/', icon: 'https://th.bing.com/th/id/ODF.E_pcQ0vuT9D7Fl3dexKp7g?w=32&h=32&qlt=90&pcl=fffffa&o=6&pid=1.2', category: 'Philippines' },
 
   // European AI Platforms
-  { id: 'aleph-alpha', name: 'Aleph Alpha', url: 'https://www.aleph-alpha.com/', icon: 'https://pngfre.com/wp-content/uploads/question-mark-42-1024x1024.png', category: 'European' },
-  { id: 'lighton', name: 'LightOn', url: 'https://www.lighton.ai/', icon: 'https://pngfre.com/wp-content/uploads/question-mark-42-1024x1024.png', category: 'European' },
-  { id: 'yandex', name: 'YandexGPT', url: 'https://ya.ru/', icon: 'https://ya.ru/favicon.ico', category: 'European' },
-  { id: 'sber', name: 'GigaChat', url: 'https://developers.sber.ru/portal/products/gigachat', icon: 'https://pngfre.com/wp-content/uploads/question-mark-42-1024x1024.png', category: 'European' },
-  { id: 'luminous', name: 'Luminous', url: 'https://www.aleph-alpha.com/luminous', icon: 'https://pngfre.com/wp-content/uploads/question-mark-42-1024x1024.png', category: 'European' },
-   
+  { id: 'aleph-alpha', name: 'Aleph Alpha', url: 'https://www.aleph-alpha.com/', icon: 'https://th.bing.com/th/id/ODF.SwZfiEsJF4mmAXN-QDd19g?w=32&h=32&qlt=93&pcl=fffffa&o=6&pid=1.2', category: 'European' },
+  { id: 'lighton', name: 'LightOn', url: 'https://www.lighton.ai/', icon: 'https://cdn-avatars.huggingface.co/v1/production/uploads/1651597775471-62715572ab9243b5d40cbb1d.png', category: 'European' },
+  { id: 'yandex', name: 'YandexGPT', url: 'https://ya.ru/', icon: 'https://th.bing.com/th/id/ODF.Im1kDflwo89o3pEBtwC9lg?w=32&h=32&qlt=93&pcl=fffffa&o=6&pid=1.2', category: 'European' },
+  { id: 'sber', name: 'GigaChat', url: 'https://developers.sber.ru/portal/products/gigachat', icon: 'https://logo-teka.com/wp-content/uploads/2025/07/gigachat-sign-logo.svgg', category: 'European' },
+
   // Latin American AI
-  { id: 'latamgpt', name: 'LatamGPT', url: 'https://cenia.cl/', icon: 'https://pngfre.com/wp-content/uploads/question-mark-42-1024x1024.png', category: 'Latin American' },
-  { id: 'maritalk', name: 'Maritalk', url: 'https://www.maritaca.ai/', icon: 'https://pngfre.com/wp-content/uploads/question-mark-42-1024x1024.png', category: 'Latin American' },
-  { id: 'sabia', name: 'Sabiá', url: 'https://www.maritaca.ai/', icon: 'https://pngfre.com/wp-content/uploads/question-mark-42-1024x1024.png', category: 'Latin American' },
-  
+  { id: 'latamgpt', name: 'LatamGPT', url: 'https://cenia.cl/', icon: 'https://th.bing.com/th/id/ODF.bLnF_gokwxIXmmOdttqO-A?w=32&h=32&qlt=90&pcl=fffffc&o=6&pid=1.2', category: 'Latin American' },
+  { id: 'maritalk', name: 'Maritalk', url: 'https://www.maritaca.ai/', icon: 'https://th.bing.com/th/id/ODF.ZAtudB7pX09DSjtpsgop1g?w=32&h=32&qlt=90&pcl=fffffa&o=6&pid=1.2', category: 'Latin American' },
+
   // African AI
   { id: 'lelapa', name: 'Lelapa AI', url: 'https://lelapa.ai/', icon: 'https://lelapa.ai/wp-content/uploads/2022/12/Wisdom.png', category: 'African' },
   { id: 'jacaranda', name: 'Jacaranda', url: 'https://www.jacaranda.com.au/jactutor/', icon: 'https://th.bing.com/th/id/ODF.Y8rXo3sQTn1YBRXcbBDHUw?w=32&h=32&qlt=90&pcl=fffffc&o=6&pid=1.2', category: 'African' },
