@@ -351,16 +351,16 @@ const ALL_LLMS = [
   { id: 'ideal', name: 'Ideal', url: 'https://ideal.com/', icon: 'https://th.bing.com/th/id/ODF.VpH6D59QryAfeAFH3bE3ew?w=32&h=32&qlt=90&pcl=fffffa&o=6&pid=1.2', category: 'Business' },
 
   // Multi-Model & Experimental
-  { id: 'botpress', name: 'Botpress', url: 'https://botpress.com/', icon: 'https://pngfre.com/wp-content/uploads/question-mark-42-1024x1024.png', category: 'Developer' },
-  { id: 'knock', name: 'Knock AI', url: 'https://www.knock-ai.com/', icon: 'https://pngfre.com/wp-content/uploads/question-mark-42-1024x1024.png', category: 'Developer' },
+  { id: 'botpress', name: 'Botpress', url: 'https://botpress.com/', icon: 'https://th.bing.com/th/id/ODF.o9WssPkUIKUdYP5P5C0jog?w=32&h=32&qlt=90&pcl=fffffc&o=6&pid=1.2', category: 'Developer' },
+  { id: 'knock', name: 'Knock AI', url: 'https://www.knock-ai.com/', icon: 'https://th.bing.com/th/id/ODF.LBxP16QXxp_-uCek-k_OQg?w=32&h=32&qlt=91&pcl=fffffa&o=6&pid=1.2', category: 'Developer' },
 
   // Specialized Tools
-  { id: 'lyro', name: 'Lyro', url: 'https://www.tidio.com/lyro/', icon: 'https://pngfre.com/wp-content/uploads/question-mark-42-1024x1024.png', category: 'Business' },
-  { id: 'nice-chatbot', name: 'NiCE Chatbot', url: 'https://www.nice.com/', icon: 'https://pngfre.com/wp-content/uploads/question-mark-42-1024x1024.png', category: 'Business' },
+  { id: 'lyro', name: 'Lyro', url: 'https://www.tidio.com/lyro/', icon: 'https://th.bing.com/th/id/ODF.ke7rrPFRRR5Y7WuOo1ACjQ?w=32&h=32&qlt=90&pcl=fffffa&o=6&pid=1.2', category: 'Business' },
+  { id: 'nice-chatbot', name: 'NiCE Chatbot', url: 'https://www.nice.com/', icon: 'https://th.bing.com/th/id/ODF.XS4rD72PBYT1SIrcw9iGCQ?w=32&h=32&qlt=90&pcl=fffffc&o=6&pid=1.2', category: 'Business' },
 
   // Open Source & Regional
-  { id: 'llama-chat', name: 'Llama Chat', url: 'https://www.llama.meta.com/', icon: 'https://pngfre.com/wp-content/uploads/question-mark-42-1024x1024.png', category: 'Open Source' },
-  { id: 'yi-chat', name: 'Yi Chat', url: 'https://www.01.ai/yi', icon: 'https://pngfre.com/wp-content/uploads/question-mark-42-1024x1024.png', category: 'Chinese' },
+  { id: 'llama-chat', name: 'Llama Chat', url: 'https://www.llama.meta.com/', icon: 'https://th.bing.com/th/id/ODF.MWMIJ-2xIWQ7doC_8gpNUg?w=32&h=32&qlt=90&pcl=fffffc&o=6&pid=1.2', category: 'Open Source' },
+  { id: 'yi-chat', name: 'Yi Chat', url: 'https://www.01.ai/yi', icon: 'https://avatars.githubusercontent.com/u/139308978?s=48&v=4', category: 'Chinese' },
 
   // Trading Open-source
   { id: 'Lean', name: 'Lean', url: 'https://www.lean.io/', icon: 'https://avatars.githubusercontent.com/u/3912814?s=48&v=4', category: 'Trading' },
