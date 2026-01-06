@@ -698,8 +698,11 @@ function App() {
                 alt="AiQuasarous Logo"
               />
             </div>
-            <h1 className="text-5xl md:text-6xl font-bold golden-glow-intro intro-title">
-              AiQuasarous Global
+            <h1
+            className="text-5xl md:text-6xl font-bold golden-glow-intro intro-title"
+            style={{ fontFamily: "Times New Roman, Times, serif" }}
+            >
+            AiQuasarous Global
             </h1>
             <p className="text-2xl text-gray-200 intro-subtitle font-serif italic tracking-wide">
               Drag-drop-open your favorite Model
@@ -996,7 +999,7 @@ function App() {
                       {/* Ready to Launch GUI - Now Centered Perfectly */}
                       <div className="absolute inset-0 flex items-center justify-center p-4 z-10">
                         <div className="text-center">
-                          <div className="p-6 rounded-x5 bg-white/70 backdrop-blur-x1 shadow-2xl border border-white/10 transform transition-all hover:scale-105">
+                          <div className="p-6 rounded-x5 bg-white/70 backdrop-blur-x10 shadow-2xl border border-white/10 transform transition-all hover:scale-105">
                             <h3 className="font-bold text-gray-900 mb-4 text-lg drop-shadow-sm">
                               Ready to Launch
                             </h3>
