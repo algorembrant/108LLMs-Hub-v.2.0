@@ -788,7 +788,7 @@ function App() {
                   }`}
                 >
                   <Monitor className="w-4 h-4" />
-                  <span className="hidden sm:inline">Tabs</span>
+                  <span className="hidden sm:inline">Openall Tabs</span>
                 </button>
 
                 <button 
@@ -801,7 +801,7 @@ function App() {
                   }`}
                 >
                   <AppWindow className="w-4 h-4" />
-                  <span className="hidden sm:inline">Popups</span>
+                  <span className="hidden sm:inline">Openall Popups</span>
                 </button>
 
                 <button 
@@ -984,8 +984,8 @@ function App() {
           animation: glow-pulse 3s ease-in-out infinite, gradient-shift 5s ease infinite;
         }
 
-        .animate-scroll { animation: scroll 100s linear infinite; }
-        .animate-scroll-reverse { animation: scroll-reverse 100s linear infinite; }
+        .animate-scroll { animation: scroll 500s linear infinite; }
+        .animate-scroll-reverse { animation: scroll-reverse 1000s linear infinite; }
         .animate-scroll:hover, .animate-scroll-reverse:hover { animation-play-state: paused; }
         
         input[type=range] {
