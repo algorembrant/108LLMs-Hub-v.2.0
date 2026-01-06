@@ -456,7 +456,7 @@ function App() {
   const ITEMS_PER_PAGE = 50;
 
   // Mobile detection state
-  const [isMobile, setIsMobile] = useState(window.innerWidth < 1000);
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 1680);
 
   // STYLING VARIABLES FOR GOLD BUTTONS
   const isButtonDisabled = activeLLMs.length === 0; // Note: isMobile logic handled by rendering condition
