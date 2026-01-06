@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo, useCallback } from 'react';
 import { X, ExternalLink, Grip, AlertCircle, Layout, Grid, Search, Github, TrendingUp, TrendingDown, Layers, ZoomIn, Maximize2, Monitor, AppWindow } from 'lucide-react';
 
 const ALL_LLMS = [
@@ -410,22 +410,53 @@ const generateMockStocks = () => {
   });
 };
 
+// --- OPTIMIZATION: Memoized Sidebar Item ---
+// This prevents the other 283 items from re-rendering when you drag one.
+const SidebarItem = React.memo(({ llm, onDragStart }) => (
+  <div
+    draggable
+    onDragStart={(e) => onDragStart(e, llm)}
+    className="p-3 border border-gray-200 rounded-lg cursor-move hover:border-gray-400 hover:shadow-sm transition-all bg-white"
+  >
+    <div className="flex items-center gap-3">
+      <img 
+        src={llm.icon} 
+        alt={llm.name} 
+        loading="lazy" // Optimization: Lazy load images
+        className="w-8 h-8 rounded-lg flex-shrink-0" 
+        onError={(e) => {
+          e.target.style.display = 'none';
+        }} 
+      />
+      <div className="flex-1 min-w-0">
+        <h3 className="font-medium text-sm truncate">{llm.name}</h3>
+        <span className="text-xs text-gray-500">{llm.category}</span>
+      </div>
+      <Grip className="w-4 h-4 text-gray-400 flex-shrink-0" />
+    </div>
+  </div>
+), (prevProps, nextProps) => {
+  // Only re-render if the ID changes (which effectively never happens for static lists)
+  return prevProps.llm.id === nextProps.llm.id;
+});
+
 function App() {
   const [activeLLMs, setActiveLLMs] = useState([]);
   const [draggedItem, setDraggedItem] = useState(null);
   const [showSidebar, setShowSidebar] = useState(true);
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [searchQuery, setSearchQuery] = useState('');
-  const [stocks, setStocks] = useState(generateMockStocks());
+  const [stocks, setStocks] = useState(() => generateMockStocks());
   const [showIntro, setShowIntro] = useState(true);
   const [showThemes, setShowThemes] = useState(true);
-  
-  // State for Zooming (Applied to Sidebar)
   const [zoomLevel, setZoomLevel] = useState(100);
 
-  const categories = ['All', ...new Set(ALL_LLMS.map(llm => llm.category))].sort();
+  // Memoize categories
+  const categories = useMemo(() => {
+    return ['All', ...new Set(ALL_LLMS.map(llm => llm.category))].sort();
+  }, []);
 
-  // Auto-hide intro after 4 seconds
+  // Intro Cleanup
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowIntro(false);
@@ -433,12 +464,16 @@ function App() {
     return () => clearTimeout(timer);
   }, []);
 
-  const filteredLLMs = ALL_LLMS.filter(llm => {
-    const matchesCategory = selectedCategory === 'All' || llm.category === selectedCategory;
-    const matchesSearch = llm.name.toLowerCase().includes(searchQuery.toLowerCase());
-    return matchesCategory && matchesSearch;
-  });
+  // Memoize Filtered List (Crucial for 284 items)
+  const filteredLLMs = useMemo(() => {
+    return ALL_LLMS.filter(llm => {
+      const matchesCategory = selectedCategory === 'All' || llm.category === selectedCategory;
+      const matchesSearch = llm.name.toLowerCase().includes(searchQuery.toLowerCase());
+      return matchesCategory && matchesSearch;
+    });
+  }, [selectedCategory, searchQuery]);
 
+  // Stock Fetching Logic
   useEffect(() => {
     const fetchStocks = async () => {
       try {
@@ -450,7 +485,6 @@ function App() {
         ];
         
         const stockData = [];
-        
         for (let i = 0; i < symbols.length; i++) {
           try {
             const symbol = symbols[i];
@@ -472,7 +506,6 @@ function App() {
                 isUp: change >= 0
               });
             }
-            
             if (i < symbols.length - 1) {
               await new Promise(resolve => setTimeout(resolve, 100));
             }
@@ -482,10 +515,8 @@ function App() {
         }
         
         if (stockData.length > 0) {
-          console.log(`Updated with ${stockData.length} real-time stocks`);
           setStocks(stockData);
         }
-        
       } catch (error) {
         console.error('Error fetching stock data:', error);
       }
@@ -496,23 +527,36 @@ function App() {
     return () => clearInterval(interval);
   }, []);
 
-  const handleDragStart = (e, llm) => {
+  // Optimized Drag Handlers using useCallback
+  const handleDragStart = useCallback((e, llm) => {
+    // This state update was causing 284 re-renders. 
+    // Now that SidebarItem is memoized, only the parent updates.
     setDraggedItem(llm);
     e.dataTransfer.effectAllowed = 'copy';
-  };
+    
+    // Optional: Add a drag image if you want to customize the ghost
+    // const dragImage = new Image();
+    // dragImage.src = llm.icon;
+    // e.dataTransfer.setDragImage(dragImage, 20, 20);
+  }, []);
 
-  const handleDragOver = (e) => {
+  const handleDragOver = useCallback((e) => {
     e.preventDefault();
     e.dataTransfer.dropEffect = 'copy';
-  };
+  }, []);
 
-  const handleDrop = (e) => {
+  const handleDrop = useCallback((e) => {
     e.preventDefault();
-    if (draggedItem && !activeLLMs.find(llm => llm.id === draggedItem.id)) {
-      setActiveLLMs([...activeLLMs, draggedItem]);
+    if (draggedItem) {
+      setActiveLLMs(prev => {
+        if (!prev.find(llm => llm.id === draggedItem.id)) {
+          return [...prev, draggedItem];
+        }
+        return prev;
+      });
     }
     setDraggedItem(null);
-  };
+  }, [draggedItem]);
 
   const removeLLM = (id) => {
     setActiveLLMs(activeLLMs.filter(llm => llm.id !== id));
@@ -525,10 +569,8 @@ function App() {
     window.open(llm.url, `llm_${llm.id}`, `width=${w},height=${h},left=${left},top=${top}`);
   };
 
-  // Function to open all currently active LLMs in new TABS
   const openAllTabs = () => {
     if (activeLLMs.length === 0) return;
-    
     if (window.confirm(`Attempting to open ${activeLLMs.length} new tabs. Please ensure pop-ups are enabled for this site.`)) {
       activeLLMs.forEach((llm, index) => {
         setTimeout(() => {
@@ -538,24 +580,42 @@ function App() {
     }
   };
 
-  // Function to open all currently active LLMs in POPUP WINDOWS
   const openAllPopups = () => {
     if (activeLLMs.length === 0) return;
-    
-    if (window.confirm(`Attempting to open ${activeLLMs.length} popup windows.`)) {
+    const count = activeLLMs.length;
+    const screenW = window.screen.availWidth;
+    const screenH = window.screen.availHeight;
+    let cols = count;
+    let rows = 1;
+    if (count > 3) {
+      cols = Math.ceil(Math.sqrt(count));
+      rows = Math.ceil(count / cols);
+    }
+    const w = Math.floor(screenW / cols);
+    const h = Math.floor(screenH / rows);
+
+    if (window.confirm(`Attempting to open ${count} popup windows arranged side-by-side.`)) {
       activeLLMs.forEach((llm, index) => {
+        const colIndex = index % cols;
+        const rowIndex = Math.floor(index / cols);
+        const left = colIndex * w;
+        const top = rowIndex * h;
         setTimeout(() => {
-          openInNewWindow(llm);
+          window.open(llm.url, `popup_${llm.id}_${Date.now()}`, `width=${w},height=${h},left=${left},top=${top}`);
         }, index * 300);
       });
     }
   };
 
+  const bannerItems = useMemo(() => [...ALL_LLMS.slice(0, 20), ...ALL_LLMS.slice(0, 20)], []); // Only scroll a subset for performance
+  const tickerItems = useMemo(() => stocks.length > 0 ? [...stocks, ...stocks] : [], [stocks]);
+
   return (
-    <div className="flex flex-col h-screen bg-white text-gray-900 overflow-hidden">
+    <div className="flex flex-col h-screen bg-white text-gray-900 overflow-hidden font-sans selection:bg-yellow-200">
+      
       {/* Animated Intro Screen */}
       {showIntro && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-gradient-to-br from-gray-900 via-gray-800 to-black intro-screen">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-gradient-to-br from-gray-900 via-gray-800 to-black intro-screen will-change-transform">
           <div className="text-center space-y-6 px-8">
             <div className="intro-logo">
               <img 
@@ -582,15 +642,16 @@ function App() {
         </div>
       )}
 
-      {/* Top LLM Banner */}
+      {/* Top LLM Banner - Paused when intro is showing */}
       <div className="h-16 flex-shrink-0 bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 overflow-hidden relative border-b border-gray-700">
         <div className="absolute inset-0 flex items-center">
-          <div className="flex animate-scroll whitespace-nowrap">
-            {[...ALL_LLMS, ...ALL_LLMS, ...ALL_LLMS].map((llm, index) => (
+          <div className={`flex animate-scroll whitespace-nowrap will-change-transform ${showIntro ? 'paused' : ''}`}>
+            {bannerItems.map((llm, index) => (
               <div key={`${llm.id}-${index}`} className="inline-flex items-center gap-3 px-6 py-2 mx-2 bg-white/10 rounded-lg backdrop-blur-sm hover:bg-white/20 transition-all cursor-pointer">
                 <img 
                   src={llm.icon} 
                   alt={llm.name} 
+                  loading="lazy"
                   className="w-6 h-6 rounded" 
                   onError={(e) => e.target.style.display = 'none'} 
                 />
@@ -603,14 +664,12 @@ function App() {
       </div>
 
       <div className="flex flex-1 overflow-hidden relative">
-        {/* Sidebar - ZOOM APPLIED HERE */}
+        {/* Sidebar */}
         <div 
           className={`${showSidebar ? 'w-80' : 'w-0'} transition-all duration-300 border-r border-gray-200 flex flex-col overflow-hidden flex-shrink-0 bg-white z-10 origin-top-left`}
         >
-          {/* Zoom Wrapper for Sidebar Content */}
           <div style={{ 
             zoom: `${zoomLevel}%`,
-            // Fallback for Firefox
             MozTransform: `scale(${zoomLevel / 100})`,
             MozTransformOrigin: 'top left',
             width: navigator.userAgent.includes("Firefox") ? `${100 * (100 / zoomLevel)}%` : '100%',
@@ -627,7 +686,6 @@ function App() {
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="flex items-center gap-1 px-3 py-1.5 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition-colors text-xs font-medium"
-                  title="Support this project on GitHub"
                 >
                   <Github className="w-4 h-4" />
                   Star
@@ -674,31 +732,19 @@ function App() {
               )}
             </div>
 
-            <div className="flex-1 overflow-y-auto p-4">
+            {/* List area with content-visibility for performance */}
+            <div className="flex-1 overflow-y-auto p-4 content-visibility-auto">
               <div className="space-y-2">
+                {/* Using the Memoized SidebarItem here. 
+                  When drag starts, 'onDragStart' is called, but 'SidebarItem' 
+                  wont re-render for items that aren't changing.
+                */}
                 {filteredLLMs.map(llm => (
-                  <div
-                    key={llm.id}
-                    draggable
-                    onDragStart={(e) => handleDragStart(e, llm)}
-                    className="p-3 border border-gray-200 rounded-lg cursor-move hover:border-gray-400 hover:shadow-sm transition-all bg-white"
-                  >
-                    <div className="flex items-center gap-3">
-                      <img 
-                        src={llm.icon} 
-                        alt={llm.name} 
-                        className="w-8 h-8 rounded-lg flex-shrink-0" 
-                        onError={(e) => {
-                          e.target.style.display = 'none';
-                        }} 
-                      />
-                      <div className="flex-1 min-w-0">
-                        <h3 className="font-medium text-sm truncate">{llm.name}</h3>
-                        <span className="text-xs text-gray-500">{llm.category}</span>
-                      </div>
-                      <Grip className="w-4 h-4 text-gray-400 flex-shrink-0" />
-                    </div>
-                  </div>
+                  <SidebarItem 
+                    key={llm.id} 
+                    llm={llm} 
+                    onDragStart={handleDragStart} 
+                  />
                 ))}
               </div>
             </div>
@@ -707,10 +753,9 @@ function App() {
 
         {/* Main Content Area */}
         <div className="flex-1 flex flex-col min-w-0">
-          {/* Controls Header */}
           <div className="h-14 flex-shrink-0 border-b border-gray-200 flex items-center justify-between px-4 bg-white">
             <div className="flex items-center gap-4">
-              <button onClick={() => setShowSidebar(!showSidebar)} className="p-2 hover:bg-gray-100 rounded-lg" title="Toggle Sidebar">
+              <button onClick={() => setShowSidebar(!showSidebar)} className="p-2 hover:bg-gray-100 rounded-lg">
                 <Layout className="w-5 h-5" />
               </button>
               <div className="text-sm text-gray-600 hidden md:block">
@@ -718,9 +763,7 @@ function App() {
               </div>
             </div>
 
-            {/* Right Side Controls */}
             <div className="flex items-center gap-4">
-              {/* Zoom Control */}
               <div className="flex items-center gap-2 bg-gray-50 px-3 py-1.5 rounded-lg border border-gray-200">
                 <ZoomIn className="w-4 h-4 text-gray-500" />
                 <input 
@@ -730,14 +773,11 @@ function App() {
                   value={zoomLevel} 
                   onChange={(e) => setZoomLevel(e.target.value)}
                   className="w-24 h-2 bg-gray-300 rounded-lg appearance-none cursor-pointer accent-gray-900"
-                  title="Adjust Sidebar Zoom"
                 />
                 <span className="text-xs font-mono w-10 text-right">{zoomLevel}%</span>
               </div>
 
-              {/* Action Buttons */}
               <div className="flex items-center gap-2">
-                {/* Open All TABS */}
                 <button 
                   onClick={openAllTabs} 
                   disabled={activeLLMs.length === 0}
@@ -746,13 +786,11 @@ function App() {
                     ? 'text-gray-400 bg-gray-50 cursor-not-allowed' 
                     : 'text-white bg-blue-600 hover:bg-blue-700'
                   }`}
-                  title="Open all active models in new tabs"
                 >
                   <Monitor className="w-4 h-4" />
-                  <span className="hidden sm:inline">Openall Tabs</span>
+                  <span className="hidden sm:inline">Tabs</span>
                 </button>
 
-                {/* Open All POPUPS */}
                 <button 
                   onClick={openAllPopups} 
                   disabled={activeLLMs.length === 0}
@@ -761,10 +799,9 @@ function App() {
                     ? 'text-gray-400 bg-gray-50 cursor-not-allowed' 
                     : 'text-white bg-purple-600 hover:bg-purple-700'
                   }`}
-                  title="Open all active models in new popup windows"
                 >
                   <AppWindow className="w-4 h-4" />
-                  <span className="hidden sm:inline">Openall Popups</span>
+                  <span className="hidden sm:inline">Popups</span>
                 </button>
 
                 <button 
@@ -778,7 +815,6 @@ function App() {
             </div>
           </div>
 
-          {/* Droppable Workspace Area */}
           <div 
             onDragOver={handleDragOver} 
             onDrop={handleDrop} 
@@ -813,7 +849,7 @@ function App() {
                         <span className="font-medium text-sm">{llm.name}</span>
                       </div>
                       <div className="flex items-center gap-1">
-                        <button onClick={() => openInNewWindow(llm)} className="p-1.5 hover:bg-gray-200 rounded" title="Open in new window">
+                        <button onClick={() => openInNewWindow(llm)} className="p-1.5 hover:bg-gray-200 rounded">
                           <Maximize2 className="w-4 h-4" />
                         </button>
                         <button onClick={() => removeLLM(llm.id)} className="p-1.5 hover:bg-gray-200 rounded">
@@ -850,12 +886,12 @@ function App() {
         </div>
       </div>
 
-      {/* Bottom Stock Ticker */}
+      {/* Bottom Stock Ticker - Paused during intro */}
       <div className="h-10 flex-shrink-0 bg-gray-900 overflow-hidden relative border-t border-gray-700 z-20">
         <div className="absolute inset-0 flex items-center">
           {stocks.length > 0 && (
-            <div className="flex animate-scroll-reverse whitespace-nowrap">
-              {[...stocks, ...stocks, ...stocks, ...stocks, ...stocks].map((stock, index) => (
+            <div className={`flex animate-scroll-reverse whitespace-nowrap will-change-transform ${showIntro ? 'paused' : ''}`}>
+              {tickerItems.map((stock, index) => (
                 <div key={`${stock.symbol}-${index}`} className="inline-flex items-center gap-2 px-4 py-1 mx-2 text-sm">
                   <span className="font-semibold text-white">{stock.symbol}</span>
                   <span className="text-gray-300">${stock.price}</span>
@@ -871,21 +907,39 @@ function App() {
       </div>
 
       <style>{`
+        /* Forces GPU usage to prevent repaint lag */
+        .will-change-transform {
+          will-change: transform;
+          transform: translateZ(0);
+        }
+
+        /* Stops animations that eat CPU when intro is up */
+        .paused {
+          animation-play-state: paused !important;
+        }
+
+        /* Massive performance boost for long lists - tells browser to not render off-screen items fully */
+        .content-visibility-auto {
+          content-visibility: auto; 
+          contain-intrinsic-size: 60px; /* Approximate height of one item */
+        }
+
         @keyframes scroll {
-          0% { transform: translateX(0); }
-          100% { transform: translateX(-33.33%); }
+          0% { transform: translate3d(0, 0, 0); }
+          100% { transform: translate3d(-33.33%, 0, 0); }
         }
         @keyframes scroll-reverse {
-          0% { transform: translateX(-33.33%); }
-          100% { transform: translateX(0); }
+          0% { transform: translate3d(-33.33%, 0, 0); }
+          100% { transform: translate3d(0, 0, 0); }
         }
+        
         @keyframes glitter {
-          0%, 100% { filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.8)); transform: scale(1); }
-          50% { filter: drop-shadow(0 0 12px rgba(255, 215, 0, 1)); transform: scale(1.05); }
+          0%, 100% { filter: drop-shadow(0 0 4px rgba(255, 215, 0, 0.6)); transform: scale(1); }
+          50% { filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.8)); transform: scale(1.05); }
         }
         @keyframes glow-pulse {
-          0%, 100% { text-shadow: 0 0 5px rgba(255, 215, 0, 0.6); }
-          50% { text-shadow: 0 0 15px rgba(255, 215, 0, 0.5); }
+          0%, 100% { text-shadow: 0 0 5px rgba(255, 215, 0, 0.4); }
+          50% { text-shadow: 0 0 10px rgba(255, 215, 0, 0.6); }
         }
         @keyframes gradient-shift {
           0% { background-position: 0% 50%; }
@@ -894,22 +948,22 @@ function App() {
         }
         @keyframes fadeOut {
           from { opacity: 1; }
-          to { opacity: 0; pointer-events: none; }
+          to { opacity: 0; pointer-events: none; visibility: hidden; }
         }
         @keyframes slideUp {
-          from { opacity: 0; transform: translateY(30px); }
+          from { opacity: 0; transform: translateY(20px); }
           to { opacity: 1; transform: translateY(0); }
         }
         @keyframes scaleIn {
-          from { opacity: 0; transform: scale(0.8); }
+          from { opacity: 0; transform: scale(0.9); }
           to { opacity: 1; transform: scale(1); }
         }
         
-        .intro-screen { animation: fadeOut 0.8s ease-in-out 3.2s forwards; }
+        .intro-screen { animation: fadeOut 0.5s ease-in-out 3.5s forwards; }
         .intro-logo { animation: scaleIn 0.6s ease-out; }
-        .logo-glow-glitter { animation: glitter 2s ease-in-out infinite; border-radius: 8px; }
+        .logo-glow-glitter { animation: glitter 3s ease-in-out infinite; border-radius: 8px; }
         .intro-title { animation: slideUp 0.8s ease-out 0.3s both; }
-        .intro-subtitle { animation: slideUp 0.8s ease-out 0.6s both; text-shadow: 0 2px 10px rgba(255, 255, 255, 0.3); }
+        .intro-subtitle { animation: slideUp 0.8s ease-out 0.6s both; }
         .intro-count { animation: slideUp 0.8s ease-out 0.9s both; letter-spacing: 0.15em; }
         .intro-dots { animation: slideUp 0.8s ease-out 1.2s both; }
         
@@ -919,7 +973,7 @@ function App() {
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
           background-clip: text;
-          animation: glow-pulse 2s ease-in-out infinite, gradient-shift 3s ease infinite;
+          animation: glow-pulse 3s ease-in-out infinite, gradient-shift 5s ease infinite;
         }
         .golden-glow-intro {
           background: linear-gradient(135deg, #ffd700 0%, #ffed4e 25%, #ffa500 50%, #ffed4e 75%, #ffd700 100%);
@@ -927,14 +981,13 @@ function App() {
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
           background-clip: text;
-          animation: glow-pulse 2s ease-in-out infinite, gradient-shift 3s ease infinite;
+          animation: glow-pulse 3s ease-in-out infinite, gradient-shift 5s ease infinite;
         }
 
-        .animate-scroll { animation: scroll 1000s linear infinite; }
-        .animate-scroll-reverse { animation: scroll-reverse 1000s linear infinite; }
+        .animate-scroll { animation: scroll 100s linear infinite; }
+        .animate-scroll-reverse { animation: scroll-reverse 100s linear infinite; }
         .animate-scroll:hover, .animate-scroll-reverse:hover { animation-play-state: paused; }
         
-        /* Custom range slider styling */
         input[type=range] {
           -webkit-appearance: none;
           background: transparent;
