@@ -307,48 +307,48 @@ const ALL_LLMS = [
   { id: 'flowise', name: 'Flowise', url: 'https://flowiseai.com/', icon: 'https://th.bing.com/th/id/ODF.7eN6m32eFK5xjxqVoWv9Dg?w=32&h=32&qlt=90&pcl=fffffc&o=6&pid=1.2', category: 'Agents' },
   
   // Local/Offline AI
-  { id: 'jan', name: 'Jan', url: 'https://jan.ai/', icon: 'https://pngfre.com/wp-content/uploads/question-mark-42-1024x1024.png', category: 'Local' },
-  { id: 'lm-studio', name: 'LM Studio', url: 'https://lmstudio.ai/', icon: 'https://pngfre.com/wp-content/uploads/question-mark-42-1024x1024.png', category: 'Local' },
-  { id: 'gpt4all', name: 'GPT4All', url: 'https://gpt4all.io/', icon: 'https://pngfre.com/wp-content/uploads/question-mark-42-1024x1024.png', category: 'Local' },
-  { id: 'privateai', name: 'PrivateAI', url: 'https://www.private-ai.com/', icon: 'https://pngfre.com/wp-content/uploads/question-mark-42-1024x1024.png', category: 'Local' },
-  { id: 'text-generation-webui', name: 'Text Gen WebUI', url: 'https://github.com/oobabooga/text-generation-webui', icon: 'https://pngfre.com/wp-content/uploads/question-mark-42-1024x1024.png', category: 'Local' },
+  { id: 'jan', name: 'Jan', url: 'https://jan.ai/', icon: 'https://th.bing.com/th/id/ODF.4mkSiPllHIACnoNO-HI7Qg?w=32&h=32&qlt=90&pcl=fffffc&o=6&pid=1.2', category: 'Local' },
+  { id: 'lm-studio', name: 'LM Studio', url: 'https://lmstudio.ai/', icon: 'https://th.bing.com/th/id/ODF.Q-e9SZIMwDKA1zZ5f2BeZw?w=32&h=32&qlt=90&pcl=fffffa&o=6&pid=1.2', category: 'Local' },
+  { id: 'gpt4all', name: 'GPT4All', url: 'https://gpt4all.io/', icon: 'https://th.bing.com/th/id/ODF.rtUolf7yV69_-mkv3rB95Q?w=32&h=32&qlt=90&pcl=fffffc&o=6&pid=1.2', category: 'Local' },
+  { id: 'privateai', name: 'PrivateAI', url: 'https://www.private-ai.com/', icon: 'https://th.bing.com/th/id/ODF.vulZNzYdS-P5oINsX1GJbw?w=32&h=32&qlt=90&pcl=fffffa&o=6&pid=1.2', category: 'Local' },
+  { id: 'text-generation-webui', name: 'Text Gen WebUI', url: 'https://github.com/oobabooga/text-generation-webui', icon: 'https://public-files.gumroad.com/6fycryymbtro29njwy84un46wh4y', category: 'Local' },
   
   // Search Engines with AI
-  { id: 'brave-leo', name: 'Brave Leo', url: 'https://brave.com/leo/', icon: 'https://pngfre.com/wp-content/uploads/question-mark-42-1024x1024.png', category: 'Search' },
-  { id: 'neeva', name: 'Neeva', url: 'https://neeva.com/', icon: 'https://pngfre.com/wp-content/uploads/question-mark-42-1024x1024.png', category: 'Search' },
-  { id: 'waldo', name: 'Waldo', url: 'https://waldo.fyi/', icon: 'https://pngfre.com/wp-content/uploads/question-mark-42-1024x1024.png', category: 'Search' },
+  { id: 'brave-leo', name: 'Brave Leo', url: 'https://brave.com/leo/', icon: 'https://th.bing.com/th/id/ODF.ymQongjEpw6mmI8ZFVXQrQ?w=32&h=32&qlt=90&pcl=fffffc&o=6&pid=1.2', category: 'Search' },
+  { id: 'neeva', name: 'Neeva', url: 'https://neeva.com/', icon: 'https://www.localogy.com/wp-content/uploads/2023/05/Localogy-Insider-13.jpg', category: 'Search' },
+  { id: 'waldo', name: 'Waldo', url: 'https://waldo.fyi/', icon: 'https://th.bing.com/th/id/ODF.mdIMQzRXkEpznTxnJ_393Q?w=32&h=32&qlt=90&pcl=fffffa&o=6&pid=1.2', category: 'Search' },
   
   // Robotics AI
-  { id: 'figure-ai', name: 'Figure AI', url: 'https://www.figure.ai/', icon: 'https://pngfre.com/wp-content/uploads/question-mark-42-1024x1024.png', category: 'Robotics' },
-  { id: '1x-technologies', name: '1X Technologies', url: 'https://www.1x.tech/', icon: 'https://pngfre.com/wp-content/uploads/question-mark-42-1024x1024.png', category: 'Robotics' },
+  { id: 'figure-ai', name: 'Figure AI', url: 'https://www.figure.ai/', icon: 'https://th.bing.com/th/id/ODF.aPIpm7-SO6oHPBub8oZGYg?w=32&h=32&qlt=90&pcl=fffffa&o=6&pid=1.2', category: 'Robotics' },
+  { id: '1x-technologies', name: '1X Technologies', url: 'https://www.1x.tech/', icon: 'https://th.bing.com/th/id/ODF.cBscBntyVIYgY-tzAZqeDg?w=32&h=32&qlt=90&pcl=fffffa&o=6&pid=1.2', category: 'Robotics' },
   
   // Climate & Science AI
-  { id: 'climate-ai', name: 'ClimateAI', url: 'https://climate.ai/', icon: 'https://pngfre.com/wp-content/uploads/question-mark-42-1024x1024.png', category: 'Science' },
-  { id: 'deepmind-alphafold', name: 'AlphaFold', url: 'https://alphafold.ebi.ac.uk/', icon: 'https://pngfre.com/wp-content/uploads/question-mark-42-1024x1024.png', category: 'Science' },
+  { id: 'climate-ai', name: 'ClimateAI', url: 'https://climate.ai/', icon: 'https://th.bing.com/th/id/ODF.3g9gml-U5n8JhKG2x6qpxw?w=32&h=32&qlt=90&pcl=fffffa&o=6&pid=1.2', category: 'Science' },
+  { id: 'deepmind-alphafold', name: 'AlphaFold', url: 'https://alphafold.ebi.ac.uk/', icon: 'https://th.bing.com/th/id/ODF.E35uhQ6PqUYSPKtzFiy-ew?w=32&h=32&qlt=90&pcl=fffffc&o=6&pid=1.2', category: 'Science' },
   
   // Gaming AI
-  { id: 'scenario', name: 'Scenario', url: 'https://www.scenario.com/', icon: 'https://pngfre.com/wp-content/uploads/question-mark-42-1024x1024.png', category: 'Gaming' },
-  { id: 'promethean-ai', name: 'Promethean AI', url: 'https://www.prometheanai.com/', icon: 'https://pngfre.com/wp-content/uploads/question-mark-42-1024x1024.png', category: 'Gaming' },
-  { id: 'inworld', name: 'Inworld AI', url: 'https://www.inworld.ai/', icon: 'https://pngfre.com/wp-content/uploads/question-mark-42-1024x1024.png', category: 'Gaming' },
-  { id: 'charisma', name: 'Charisma.ai', url: 'https://charisma.ai/', icon: 'https://pngfre.com/wp-content/uploads/question-mark-42-1024x1024.png', category: 'Gaming' },
+  { id: 'scenario', name: 'Scenario', url: 'https://www.scenario.com/', icon: 'https://th.bing.com/th/id/ODF.xEAX5mdMJmaiOwyQjK4B_A?w=32&h=32&qlt=90&pcl=fffffc&o=6&pid=1.2', category: 'Gaming' },
+  { id: 'promethean-ai', name: 'Promethean AI', url: 'https://www.prometheanai.com/', icon: 'https://th.bing.com/th/id/ODF.a_Zh0hWCNrH4n5vjnBW-eg?w=32&h=32&qlt=90&pcl=fffffa&o=6&pid=1.2', category: 'Gaming' },
+  { id: 'inworld', name: 'Inworld AI', url: 'https://www.inworld.ai/', icon: 'https://th.bing.com/th/id/ODF.3n6ohUiDHboVeW06MfaBEg?w=32&h=32&qlt=90&pcl=fffffa&o=6&pid=1.2', category: 'Gaming' },
+  { id: 'charisma', name: 'Charisma.ai', url: 'https://charisma.ai/', icon: 'https://th.bing.com/th/id/ODF.vU6Qq_cKmpP8zF7wUR1eZQ?w=32&h=32&qlt=90&pcl=fffffa&o=6&pid=1.2', category: 'Gaming' },
   
   // Social & Companion AI
-  { id: 'replika', name: 'Replika', url: 'https://replika.com/', icon: 'https://pngfre.com/wp-content/uploads/question-mark-42-1024x1024.png', category: 'Social' },
-  { id: 'kindroid', name: 'Kindroid', url: 'https://kindroid.ai/', icon: 'https://pngfre.com/wp-content/uploads/question-mark-42-1024x1024.png', category: 'Social' },
-  { id: 'nomi', name: 'Nomi AI', url: 'https://nomi.ai/', icon: 'https://pngfre.com/wp-content/uploads/question-mark-42-1024x1024.png', category: 'Social' },
-  { id: 'chai', name: 'Chai', url: 'https://www.chai-research.com/', icon: 'https://pngfre.com/wp-content/uploads/question-mark-42-1024x1024.png', category: 'Social' },
+  { id: 'replika', name: 'Replika', url: 'https://replika.com/', icon: 'https://th.bing.com/th/id/ODF.glv_dPYKrUvo0V2r5t_o3g?w=32&h=32&qlt=90&pcl=fffffc&o=6&pid=1.2', category: 'Social' },
+  { id: 'kindroid', name: 'Kindroid', url: 'https://kindroid.ai/', icon: 'https://th.bing.com/th/id/ODF.IUVDt69hMmWkRxqtClJQKg?w=32&h=32&qlt=90&pcl=fffffa&o=6&pid=1.2', category: 'Social' },
+  { id: 'nomi', name: 'Nomi AI', url: 'https://nomi.ai/', icon: 'https://th.bing.com/th/id/ODF.tTmFYX9-RDOsQQENQA58JA?w=32&h=32&qlt=90&pcl=fffffa&o=6&pid=1.2', category: 'Social' },
+  { id: 'chai', name: 'Chai', url: 'https://www.chai-research.com/', icon: 'https://th.bing.com/th/id/ODF.CRk8JFYJGQCNt4IKPpD6gA?w=32&h=32&qlt=90&pcl=fffffc&o=6&pid=1.2', category: 'Social' },
 
   // Search & Productivity
-  { id: 'fini', name: 'Fini AI', url: 'https://www.usefini.com/', icon: 'https://pngfre.com/wp-content/uploads/question-mark-42-1024x1024.png', category: 'Productivity' },
-  { id: 'zenochat', name: 'ZenoChat', url: 'https://textcortex.com/templates/zeno-chat-gpt-alternative', icon: 'https://pngfre.com/wp-content/uploads/question-mark-42-1024x1024.png', category: 'Productivity' },
-  { id: 'chatsonic', name: 'Chatsonic', url: 'https://writesonic.com/chat', icon: 'https://pngfre.com/wp-content/uploads/question-mark-42-1024x1024.png', category: 'Specialized' },
+  { id: 'fini', name: 'Fini AI', url: 'https://www.usefini.com/', icon: 'https://storage.googleapis.com/public-fini-assets/Fini%20logo.png', category: 'Productivity' },
+  { id: 'zenochat', name: 'ZenoChat', url: 'https://textcortex.com/templates/zeno-chat-gpt-alternative', icon: 'https://th.bing.com/th/id/ODF.m1XoPkuP1Gro5VQawkDe-w?w=32&h=32&qlt=90&pcl=fffffc&o=6&pid=1.2', category: 'Productivity' },
+  { id: 'chatsonic', name: 'Chatsonic', url: 'https://writesonic.com/chat', icon: 'https://th.bing.com/th/id/ODF.JYU10RC-b33sbBHymdZIWQ?w=32&h=32&qlt=90&pcl=fffffc&o=6&pid=1.2', category: 'Specialized' },
 
   // HR & Enterprise
-  { id: 'amber', name: 'Amber by inFeedo', url: 'https://www.infeedo.ai/', icon: 'https://pngfre.com/wp-content/uploads/question-mark-42-1024x1024.png', category: 'Business' },
-  { id: 'paradox-olivia', name: 'Paradox Olivia', url: 'https://www.paradox.ai/', icon: 'https://pngfre.com/wp-content/uploads/question-mark-42-1024x1024.png', category: 'Business' },
-  { id: 'mya', name: 'Mya Systems', url: 'https://www.mya.com/', icon: 'https://pngfre.com/wp-content/uploads/question-mark-42-1024x1024.png', category: 'Business' },
-  { id: 'eightfold', name: 'Eightfold AI', url: 'https://eightfold.ai/', icon: 'https://pngfre.com/wp-content/uploads/question-mark-42-1024x1024.png', category: 'Business' },
-  { id: 'ideal', name: 'Ideal', url: 'https://ideal.com/', icon: 'https://pngfre.com/wp-content/uploads/question-mark-42-1024x1024.png', category: 'Business' },
+  { id: 'amber', name: 'Amber by inFeedo', url: 'https://www.infeedo.ai/', icon: 'https://th.bing.com/th/id/ODF.s3UqVUNx8f-ITxRDr74B1w?w=32&h=32&qlt=90&pcl=fffffa&o=6&pid=1.2', category: 'Business' },
+  { id: 'paradox-olivia', name: 'Paradox Olivia', url: 'https://www.paradox.ai/', icon: 'https://th.bing.com/th/id/ODF.EvHP4axI2CMLaWYEkxst9Q?w=32&h=32&qlt=90&pcl=fffffa&o=6&pid=1.2', category: 'Business' },
+  { id: 'mya', name: 'Mya Systems', url: 'https://www.mya.com/', icon: 'https://th.bing.com/th/id/OIP.QxDwJd4ImEDrE-ZXXfGXbAAAAA?w=108&h=108&c=1&bgcl=903db4&r=0&o=7&pid=ImgRC&rm=3', category: 'Business' },
+  { id: 'eightfold', name: 'Eightfold AI', url: 'https://eightfold.ai/', icon: 'https://th.bing.com/th/id/ODF.DoUk6XnqtuFFYx-T6pqjOg?w=32&h=32&qlt=90&pcl=fffffc&o=6&pid=1.2', category: 'Business' },
+  { id: 'ideal', name: 'Ideal', url: 'https://ideal.com/', icon: 'https://th.bing.com/th/id/ODF.VpH6D59QryAfeAFH3bE3ew?w=32&h=32&qlt=90&pcl=fffffa&o=6&pid=1.2', category: 'Business' },
 
   // Multi-Model & Experimental
   { id: 'botpress', name: 'Botpress', url: 'https://botpress.com/', icon: 'https://pngfre.com/wp-content/uploads/question-mark-42-1024x1024.png', category: 'Developer' },
