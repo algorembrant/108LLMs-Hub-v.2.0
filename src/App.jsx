@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useMemo, useCallback } from 'react';
-import { X, ExternalLink, Grip, AlertCircle, Layout, Grid, Search, Github, TrendingUp, TrendingDown, Layers, ZoomIn, Maximize2, Monitor, AppWindow } from 'lucide-react';
+import React, { useState, useEffect, useMemo, useCallback, useRef } from 'react';
+import { X, ExternalLink, Grip, AlertCircle, Layout, Grid, Search, Github, TrendingUp, TrendingDown, Layers, ZoomIn, Maximize2, Monitor, AppWindow, ChevronRight, ChevronLeft } from 'lucide-react';
 
 const ALL_LLMS = [
   // Major AI Assistants
@@ -410,8 +410,7 @@ const generateMockStocks = () => {
   });
 };
 
-// --- OPTIMIZATION: Memoized Sidebar Item ---
-// This prevents the other 283 items from re-rendering when you drag one.
+// Memoized Sidebar Item
 const SidebarItem = React.memo(({ llm, onDragStart }) => (
   <div
     draggable
@@ -422,7 +421,7 @@ const SidebarItem = React.memo(({ llm, onDragStart }) => (
       <img 
         src={llm.icon} 
         alt={llm.name} 
-        loading="lazy" // Optimization: Lazy load images
+        loading="lazy" 
         className="w-8 h-8 rounded-lg flex-shrink-0" 
         onError={(e) => {
           e.target.style.display = 'none';
@@ -436,27 +435,32 @@ const SidebarItem = React.memo(({ llm, onDragStart }) => (
     </div>
   </div>
 ), (prevProps, nextProps) => {
-  // Only re-render if the ID changes (which effectively never happens for static lists)
   return prevProps.llm.id === nextProps.llm.id;
 });
 
 function App() {
   const [activeLLMs, setActiveLLMs] = useState([]);
-  const [draggedItem, setDraggedItem] = useState(null);
+  const draggedItemRef = useRef(null); 
+
   const [showSidebar, setShowSidebar] = useState(true);
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [searchQuery, setSearchQuery] = useState('');
   const [stocks, setStocks] = useState(() => generateMockStocks());
   const [showIntro, setShowIntro] = useState(true);
-  const [showThemes, setShowThemes] = useState(true);
+  
+  // ADJUSTMENT: Hide themes by default
+  const [showThemes, setShowThemes] = useState(false);
+  
   const [zoomLevel, setZoomLevel] = useState(100);
+  
+  // ADJUSTMENT: Page state for the "Show 50 / Unshow previous" logic
+  const [page, setPage] = useState(0);
+  const ITEMS_PER_PAGE = 50;
 
-  // Memoize categories
   const categories = useMemo(() => {
     return ['All', ...new Set(ALL_LLMS.map(llm => llm.category))].sort();
   }, []);
 
-  // Intro Cleanup
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowIntro(false);
@@ -464,7 +468,12 @@ function App() {
     return () => clearTimeout(timer);
   }, []);
 
-  // Memoize Filtered List (Crucial for 284 items)
+  // Reset page to 0 if filter changes
+  useEffect(() => {
+    setPage(0);
+  }, [selectedCategory, searchQuery]);
+
+  // 1. Get ALL matches (The Total Count)
   const filteredLLMs = useMemo(() => {
     return ALL_LLMS.filter(llm => {
       const matchesCategory = selectedCategory === 'All' || llm.category === selectedCategory;
@@ -473,7 +482,15 @@ function App() {
     });
   }, [selectedCategory, searchQuery]);
 
-  // Stock Fetching Logic
+  // --- OPTIMIZATION: Pagination Slice ---
+  // Shows items [0-50], then [50-100], etc.
+  const visibleLLMs = useMemo(() => {
+    const startIndex = page * ITEMS_PER_PAGE;
+    const endIndex = startIndex + ITEMS_PER_PAGE;
+    return filteredLLMs.slice(startIndex, endIndex);
+  }, [filteredLLMs, page]);
+  // --------------------------------------
+
   useEffect(() => {
     const fetchStocks = async () => {
       try {
@@ -527,17 +544,10 @@ function App() {
     return () => clearInterval(interval);
   }, []);
 
-  // Optimized Drag Handlers using useCallback
   const handleDragStart = useCallback((e, llm) => {
-    // This state update was causing 284 re-renders. 
-    // Now that SidebarItem is memoized, only the parent updates.
-    setDraggedItem(llm);
+    draggedItemRef.current = llm;
     e.dataTransfer.effectAllowed = 'copy';
-    
-    // Optional: Add a drag image if you want to customize the ghost
-    // const dragImage = new Image();
-    // dragImage.src = llm.icon;
-    // e.dataTransfer.setDragImage(dragImage, 20, 20);
+    e.dataTransfer.setData('text/plain', llm.id); 
   }, []);
 
   const handleDragOver = useCallback((e) => {
@@ -547,16 +557,18 @@ function App() {
 
   const handleDrop = useCallback((e) => {
     e.preventDefault();
-    if (draggedItem) {
+    const item = draggedItemRef.current;
+    
+    if (item) {
       setActiveLLMs(prev => {
-        if (!prev.find(llm => llm.id === draggedItem.id)) {
-          return [...prev, draggedItem];
+        if (!prev.find(llm => llm.id === item.id)) {
+          return [...prev, item];
         }
         return prev;
       });
     }
-    setDraggedItem(null);
-  }, [draggedItem]);
+    draggedItemRef.current = null;
+  }, []);
 
   const removeLLM = (id) => {
     setActiveLLMs(activeLLMs.filter(llm => llm.id !== id));
@@ -607,7 +619,7 @@ function App() {
     }
   };
 
-  const bannerItems = useMemo(() => [...ALL_LLMS.slice(0, 20), ...ALL_LLMS.slice(0, 20)], []); // Only scroll a subset for performance
+  const bannerItems = useMemo(() => [...ALL_LLMS.slice(0, 20), ...ALL_LLMS.slice(0, 20)], []);
   const tickerItems = useMemo(() => stocks.length > 0 ? [...stocks, ...stocks] : [], [stocks]);
 
   return (
@@ -642,7 +654,7 @@ function App() {
         </div>
       )}
 
-      {/* Top LLM Banner - Paused when intro is showing */}
+      {/* Top LLM Banner */}
       <div className="h-16 flex-shrink-0 bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 overflow-hidden relative border-b border-gray-700">
         <div className="absolute inset-0 flex items-center">
           <div className={`flex animate-scroll whitespace-nowrap will-change-transform ${showIntro ? 'paused' : ''}`}>
@@ -692,7 +704,11 @@ function App() {
                 </a>
               </div>
               <p className="text-sm text-gray-600">Drag-drop-open your favorite Model</p>
-              <p className="text-xs text-gray-500 mt-1">{ALL_LLMS.length} AI platforms available worldwide</p>
+              {/* Show total count, but mention pagination */}
+              <p className="text-xs text-gray-500 mt-1">
+                {filteredLLMs.length} models total
+                {filteredLLMs.length > ITEMS_PER_PAGE && ` (Page ${page + 1})`}
+              </p>
             </div>
 
             <div className="px-4 py-3 border-b border-gray-200">
@@ -712,7 +728,7 @@ function App() {
                   onClick={() => setShowThemes(!showThemes)}
                   className="text-xs text-gray-600 hover:text-gray-900 underline"
                 >
-                  {showThemes ? 'Hide' : 'Show'}
+                  {showThemes ? 'Hide' : 'Show more'}
                 </button>
               </div>
               {showThemes && (
@@ -735,17 +751,52 @@ function App() {
             {/* List area with content-visibility for performance */}
             <div className="flex-1 overflow-y-auto p-4 content-visibility-auto">
               <div className="space-y-2">
-                {/* Using the Memoized SidebarItem here. 
-                  When drag starts, 'onDragStart' is called, but 'SidebarItem' 
-                  wont re-render for items that aren't changing.
-                */}
-                {filteredLLMs.map(llm => (
+                {visibleLLMs.map(llm => (
                   <SidebarItem 
                     key={llm.id} 
                     llm={llm} 
                     onDragStart={handleDragStart} 
                   />
                 ))}
+                
+                {/* PAGINATION CONTROLS */}
+                {(filteredLLMs.length > ITEMS_PER_PAGE) && (
+                  <div className="flex items-center justify-between pt-4 mt-2 border-t border-gray-100">
+                    <button 
+                      onClick={() => setPage(p => Math.max(0, p - 1))}
+                      disabled={page === 0}
+                      className={`text-xs flex items-center gap-1 px-3 py-2 rounded ${
+                        page === 0 ? 'text-gray-300' : 'text-gray-700 hover:bg-gray-100'
+                      }`}
+                    >
+                      <ChevronLeft className="w-3 h-3" />
+                      Prev
+                    </button>
+
+                    <span className="text-xs text-gray-400">
+                       {page * ITEMS_PER_PAGE + 1} - {Math.min((page + 1) * ITEMS_PER_PAGE, filteredLLMs.length)}
+                    </span>
+
+                    <button 
+                       onClick={() => setPage(p => p + 1)}
+                       disabled={(page + 1) * ITEMS_PER_PAGE >= filteredLLMs.length}
+                       className={`text-xs flex items-center gap-1 px-3 py-2 rounded font-medium ${
+                         (page + 1) * ITEMS_PER_PAGE >= filteredLLMs.length 
+                         ? 'text-gray-300' 
+                         : 'text-blue-600 hover:bg-blue-50'
+                       }`}
+                    >
+                      + Show Next 50
+                      <ChevronRight className="w-3 h-3" />
+                    </button>
+                  </div>
+                )}
+
+                {filteredLLMs.length === 0 && (
+                    <div className="text-center text-gray-400 text-xs py-10">
+                        No matches found
+                    </div>
+                )}
               </div>
             </div>
           </div>
@@ -886,7 +937,7 @@ function App() {
         </div>
       </div>
 
-      {/* Bottom Stock Ticker - Paused during intro */}
+      {/* Bottom Stock Ticker */}
       <div className="h-10 flex-shrink-0 bg-gray-900 overflow-hidden relative border-t border-gray-700 z-20">
         <div className="absolute inset-0 flex items-center">
           {stocks.length > 0 && (
@@ -984,8 +1035,8 @@ function App() {
           animation: glow-pulse 3s ease-in-out infinite, gradient-shift 5s ease infinite;
         }
 
-        .animate-scroll { animation: scroll 500s linear infinite; }
-        .animate-scroll-reverse { animation: scroll-reverse 1000s linear infinite; }
+        .animate-scroll { animation: scroll 300s linear infinite; }
+        .animate-scroll-reverse { animation: scroll-reverse 1500s linear infinite; }
         .animate-scroll:hover, .animate-scroll-reverse:hover { animation-play-state: paused; }
         
         input[type=range] {
