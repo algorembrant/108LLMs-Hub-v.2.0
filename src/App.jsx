@@ -991,12 +991,12 @@ function App() {
                       />
                       
                       {/* Glass-morphism Overlay for button readability */}
-                      <div className="absolute inset-0 bg-white/0 backdrop-blur-[1.5px]"></div>
+                      <div className="absolute inset-0 bg-white/0 backdrop-blur-[100x]"></div>
 
                       {/* Ready to Launch GUI - Now Centered Perfectly */}
                       <div className="absolute inset-0 flex items-center justify-center p-4 z-10">
                         <div className="text-center">
-                          <div className="p-6 rounded-x5 bg-white/50 backdrop-blur-x1 shadow-2xl border border-white/0 transform transition-all hover:scale-105">
+                          <div className="p-6 rounded-x5 bg-white/70 backdrop-blur-x1 shadow-2xl border border-white/10 transform transition-all hover:scale-105">
                             <h3 className="font-bold text-gray-900 mb-4 text-lg drop-shadow-sm">
                               Ready to Launch
                             </h3>
