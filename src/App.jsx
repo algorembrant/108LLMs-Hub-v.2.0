@@ -109,10 +109,10 @@ const ALL_LLMS = [
   // Japanese AI Platforms
   { id: 'rinna', name: 'Rinna AI', url: 'https://rinna.co.jp/AI-rinna/', icon: 'https://th.bing.com/th/id/ODF.E-18kEsU8XoEnRg-exXcaQ?w=32&h=32&qlt=95&pcl=fffffa&o=6&pid=1.2', category: 'Japanese' },
   { id: 'sakana', name: 'Sakana AI', url: 'https://sakana.ai/', icon: 'https://th.bing.com/th/id/ODF.XxZFQYG73wfUy_KqLcf0FA?w=32&h=32&qlt=90&pcl=fffffc&o=6&pid=1.2', category: 'Japanese' },
-  { id: 'rakuten', name: 'Rakuten AI', url: 'https://www.rakuten.co.jp/', icon: 'https://pngfre.com/wp-content/uploads/question-mark-42-1024x1024.png', category: 'Japanese' },
-  { id: 'cyberagent', name: 'CyberAgent LLM', url: 'https://www.cyberagent.co.jp/', icon: 'https://pngfre.com/wp-content/uploads/question-mark-42-1024x1024.png', category: 'Japanese' },
-  { id: 'japanese-stablelm', name: 'Japanese StableLM', url: 'https://ja.stability.ai/', icon: 'https://pngfre.com/wp-content/uploads/question-mark-42-1024x1024.png', category: 'Japanese' },
-  { id: 'pfn-plamo', name: 'PLaMo', url: 'https://www.preferred.jp/', icon: 'https://pngfre.com/wp-content/uploads/question-mark-42-1024x1024.png', category: 'Japanese' },
+  { id: 'rakuten', name: 'Rakuten AI', url: 'https://www.rakuten.co.jp/', icon: 'https://sendico.com/images/stores/logos/rakuten-front.png', category: 'Japanese' },
+  { id: 'cyberagent', name: 'CyberAgent LLM', url: 'https://www.cyberagent.co.jp/', icon: 'https://th.bing.com/th/id/ODF.hM5q6SFIajuy4ET3xwnoBA?w=32&h=32&qlt=90&pcl=fffffc&o=6&pid=1.2', category: 'Japanese' },
+  { id: 'japanese-stablelm', name: 'Japanese StableLM', url: 'https://ja.stability.ai/', icon: 'https://th.bing.com/th/id/ODF.O_NFnJ4_PZkJo1qZ7atWVA?w=32&h=32&qlt=90&pcl=fffffa&o=6&pid=1.2', category: 'Japanese' },
+  { id: 'pfn-plamo', name: 'PLaMo', url: 'https://www.preferred.jp/', icon: 'https://th.bing.com/th/id/ODF.A1xWguSIDjJ_vAwsTzqgpg?w=32&h=32&qlt=90&pcl=fffffc&o=6&pid=1.2', category: 'Japanese' },
 
   // Philippine AI Platforms
   { id: 'lexpilipinas', name: 'Lex Pilipinas', url: 'https://lexpilipinas.com/', icon: 'https://pngfre.com/wp-content/uploads/question-mark-42-1024x1024.png', category: 'Philippines' },
