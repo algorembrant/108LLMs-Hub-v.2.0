@@ -1,4 +1,3 @@
-<img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/66e2e352-99fa-4e64-b745-1e7555b9c041" />### AiQuasarous Global<br>
 Drag-drop-open your favorite Model <br>
 ***264 AI platforms** available worldwide in one place!*<br>
 >**NO SIGN-IN, NO ADS, NO SUBSCRIPTION, NO IP-ADDRESS LEAKAGE, NO HASSLE,** and access **ALL** AI platforms for **FREE!** with just a one-click button away <br>
